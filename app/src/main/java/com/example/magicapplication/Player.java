@@ -25,18 +25,25 @@ public class Player {
     }
 
     public void start(){
-        this.drawCard();
-        this.drawCard();
-        this.drawCard();
-        this.drawCard();
-        this.drawCard();
-        this.drawCard();
-        this.drawCard();
+        this.drawCard(7);
     }
 
     public void drawCard(){
-        this.hand.add(this.deck.get(0));
-        this.deck.remove(0);
+        if (this.deck.size() >= 1) {
+            this.hand.add(this.deck.get(0));
+            this.deck.remove(0);
+        }
+//            else { MAKE THEM LOSE }
+    }
+
+    public void drawCard(int numCards){
+        for (int i = 0; i < numCards; i++){
+            if (this.deck.size() >= 1) {
+                this.hand.add(this.deck.get(0));
+                this.deck.remove(0);
+            }
+//            else { MAKE THEM LOSE }
+        }
     }
 
 
