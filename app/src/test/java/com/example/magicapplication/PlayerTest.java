@@ -129,4 +129,25 @@ public class PlayerTest {
         assertEquals(Arrays.asList(card1, card2), player1.getGraveyard());
     }
 
+    @Test
+    public void testPlayLand(){
+        player1.playLand(card1);
+        assertEquals(1, player1.getPlayedLandSize(), 0.01);
+    }
+
+    @Test
+    public void testGetPlayedLand(){
+        player1.playLand(card1);
+        assertEquals(Arrays.asList(card1), player1.getPlayedLand());
+    }
+
+    @Test
+    public void testGetUntappedLand(){
+        player1.playLand(card1);
+        player1.playLand(card2);
+        card3.setTapped(true);
+        player1.playLand(card3);
+        assertEquals(Arrays.asList(card1, card2), player1.getUntappedLand() );
+    }
+
 }

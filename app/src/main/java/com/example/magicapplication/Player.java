@@ -49,12 +49,27 @@ public class Player {
         this.hand.remove(card);
     }
 
+    public void playLand(Land land){
+        this.playedLand.add(land);
+    }
+
+    public Integer getPlayedLandSize(){
+        return this.playedLand.size();
+    }
+
     public ArrayList<Land> getPlayedLand() {
         return playedLand;
     }
 
-    public void addActiveLand(Land land) {
-        this.hand.add(land);
+    public ArrayList<Land> getUntappedLand() {
+        ArrayList<Land> untappedLand = new ArrayList<Land>();
+
+        for (Land land : this.playedLand){
+            if (land.getTapped() == false){
+                untappedLand.add(land);
+            }
+        }
+        return untappedLand;
     }
 
     public ArrayList<Card> getDeck() {
