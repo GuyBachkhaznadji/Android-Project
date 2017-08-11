@@ -12,7 +12,7 @@ public class LandTest extends CardTestTemplate {
 
     @Before
     public void before(){
-        land1 = new Land("Green", 0);
+        land1 = new Land("Green");
     }
 
     @Test

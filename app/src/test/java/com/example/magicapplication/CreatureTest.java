@@ -19,7 +19,6 @@ public class CreatureTest extends CardTestTemplate {
         assertEquals( 5, creature1.getCost(), 0.01 );
     }
 
-
     @Test
     public void testGetColour(){
         assertEquals( "Green", creature1.getColour() );
