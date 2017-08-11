@@ -60,6 +60,18 @@ public class PlayerTest {
         assertEquals(10, player1.getLifePoints(), 0.01);
     }
 
+    @Test
+    public void testAddLifePoints(){
+        player1.addLifePoints(5);
+        assertEquals(25, player1.getLifePoints(), 0.01);
+    }
+
+    @Test
+    public void testRemoveLifePoints(){
+        player1.removeLifePoints(5);
+        assertEquals(15, player1.getLifePoints(), 0.01);
+    }
+
 //    public ArrayList<Card> getHand() {
 //        return hand;
 //    }

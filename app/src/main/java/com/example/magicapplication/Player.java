@@ -26,6 +26,13 @@ public class Player {
         this.lifePoints = lifePoints;
     }
 
+    public void addLifePoints(Integer lifePoints) {
+        this.lifePoints += lifePoints;
+    }
+    public void removeLifePoints(Integer lifePoints) {
+        this.lifePoints -= lifePoints;
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }
