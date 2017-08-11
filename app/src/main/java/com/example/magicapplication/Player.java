@@ -2,6 +2,7 @@ package com.example.magicapplication;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player {
     private Integer lifePoints;
@@ -13,9 +14,24 @@ public class Player {
     public Player(ArrayList<Card> deck){
         this.lifePoints = 20;
         this.deck = deck;
+//        this.shuffleDeck();
         this.hand = new ArrayList<Card>();
         this.playedLand = new ArrayList<Land>();
         this.graveyard = new ArrayList<Card>();
+    }
+
+    public void shuffleDeck(){
+        Collections.shuffle(this.deck);
+    }
+
+    public void drawCard(){
+        this.hand.add(this.deck.get(0));
+        this.deck.remove(0);
+    }
+
+
+    public Integer getDeckSize(){
+        return this.deck.size();
     }
 
     public Integer getLifePoints() {

@@ -99,8 +99,8 @@ public class PlayerTest {
     }
 
     @Test
-    public void testGetDeck(){
-        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10), player1.getDeck());
+    public void testGetDeckSize(){
+        assertEquals(10, player1.getDeckSize(), 0.01 );
     }
 
     @Test
@@ -148,6 +148,12 @@ public class PlayerTest {
         card3.setTapped(true);
         player1.playLand(card3);
         assertEquals(Arrays.asList(card1, card2), player1.getUntappedLand() );
+    }
+
+    @Test
+    public void testDrawCard(){
+        player1.drawCard();
+        assertEquals(Arrays.asList(card1), player1.getHand() );
     }
 
 }
