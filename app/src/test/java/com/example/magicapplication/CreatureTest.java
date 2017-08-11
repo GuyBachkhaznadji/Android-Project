@@ -25,4 +25,30 @@ public class CreatureTest extends CardTestTemplate {
     }
 
 
+
+    @Test
+    public void testGetTapped(){
+        assertEquals( true, creature1.getTapped() );
+    }
+
+    @Test
+    public void testSetTapped(){
+        creature1.setTapped(false);
+        assertEquals( false, creature1.getTapped() );
+    }
+
+
+    @Test
+    public void testGetAttacking(){
+        assertEquals( false, creature1.getAttacking() );
+    }
+
+    @Test
+    public void testSetAttacking(){
+        creature1.setAttacking(true);
+        assertEquals( true, creature1.getAttacking() );
+    }
+
+
+
 }

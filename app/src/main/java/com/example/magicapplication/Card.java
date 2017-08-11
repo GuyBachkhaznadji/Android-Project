@@ -28,7 +28,7 @@ public abstract class Card {
         return this.tapped;
     }
 
-    public void setTapped(boolean trueFalse){
-        this.tapped = trueFalse;
+    public void setTapped(boolean tapped){
+        this.tapped = tapped;
     }
 }
