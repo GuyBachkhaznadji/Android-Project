@@ -38,7 +38,7 @@ public class Player {
     }
 
     public ArrayList<Card> getHand() {
-        return hand;
+        return this.hand;
     }
 
     public void addHandCard(Card card) {

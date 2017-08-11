@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static junit.framework.Assert.*;
 
@@ -87,9 +88,13 @@ public class PlayerTest {
 //        return hand;
 //    }
 
-//    public void addHandCard(Card card) {
-//        this.hand.add(card);
-//    }
+    @Test
+    public void testGetHand(){
+        player1.addHandCard(card1);
+        assertEquals(Arrays.asList(card1), player1.getHand());
+    }
+
+
 //
 //    public void removeHandCard(Card card) {
 //        this.hand.remove(card);
