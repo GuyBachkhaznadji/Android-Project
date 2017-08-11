@@ -1,5 +1,28 @@
 package com.example.magicapplication;
 
 
-public class LandTest extends Test {
+import org.junit.Before;
+import org.junit.Test;
+import static junit.framework.Assert.*;
+
+public class LandTest extends CardTestTemplate {
+
+    Land land1;
+
+
+    @Before
+    public void before(){
+        land1 = new Land("Green", 0);
+    }
+
+    @Test
+    public void testGetCost(){
+        assertEquals( 0, land1.getCost(), 0.01 );
+    }
+
+
+    @Test
+    public void testGetColour(){
+        assertEquals( "Green", land1.getColour() );
+    }
 }
