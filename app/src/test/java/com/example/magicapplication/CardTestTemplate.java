@@ -10,13 +10,18 @@ public abstract class CardTestTemplate {
     public abstract void before();
 
     @Test
+    public abstract void testGetName();
+
+    @Test
     public abstract void testGetCost();
 
     @Test
     public abstract void testGetColour();
 
+    @Test
+    public abstract void testGetTapped();
 
-
-
+    @Test
+    public abstract void testSetTapped();
 
 }

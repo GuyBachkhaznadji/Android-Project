@@ -12,7 +12,12 @@ public class LandTest extends CardTestTemplate {
 
     @Before
     public void before(){
-        land1 = new Land("Green");
+        land1 = new Land("Forest", "Green");
+    }
+
+    @Test
+    public void testGetName(){
+        assertEquals( "Forest", land1.getName() );
     }
 
     @Test
