@@ -20,9 +20,20 @@ public class LandTest extends CardTestTemplate {
         assertEquals( 0, land1.getCost(), 0.01 );
     }
 
-
     @Test
     public void testGetColour(){
         assertEquals( "Green", land1.getColour() );
     }
+
+    @Test
+    public void testGetTapped(){
+        assertEquals( false, land1.getTapped() );
+    }
+
+    @Test
+    public void testSetTapped(){
+        land1.setTapped(true);
+        assertEquals( true, land1.getTapped() );
+    }
+
 }
