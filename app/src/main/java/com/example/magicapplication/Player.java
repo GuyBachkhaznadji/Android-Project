@@ -109,6 +109,10 @@ public class Player {
         return deck;
     }
 
+    public Integer getUntappedLandSize(){
+       return this.getUntappedLand().size();
+    }
+
     public Integer getGraveyardSize(){
         return this.graveyard.size();
     }

@@ -151,6 +151,15 @@ public class PlayerTest {
     }
 
     @Test
+    public void testGetUntappedLandSize(){
+        player1.playLand(card1);
+        player1.playLand(card2);
+        card3.setTapped(true);
+        player1.playLand(card3);
+        assertEquals(2, player1.getUntappedLandSize(), 0.01 );
+    }
+
+    @Test
     public void testDrawCard(){
         player1.drawCard();
         assertEquals(Arrays.asList(card1), player1.getHand() );
@@ -163,8 +172,6 @@ public class PlayerTest {
         assertEquals(Arrays.asList(card1, card2), player1.getHand() );
         assertEquals(8, player1.getDeckSize(), 0.01 );
     }
-
-
 
     @Test
     public void testStart(){
