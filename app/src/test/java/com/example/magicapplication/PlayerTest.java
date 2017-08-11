@@ -72,10 +72,21 @@ public class PlayerTest {
         assertEquals(15, player1.getLifePoints(), 0.01);
     }
 
+    @Test
+    public void testGetHandSize(){
+        assertEquals(0, player1.getHandSize(), 0.01);
+    }
+
+    @Test
+    public void testAddHandCard(){
+        player1.addHandCard(card1);
+        assertEquals(1, player1.getHandSize(), 0.01);
+    }
+
 //    public ArrayList<Card> getHand() {
 //        return hand;
 //    }
-//
+
 //    public void addHandCard(Card card) {
 //        this.hand.add(card);
 //    }

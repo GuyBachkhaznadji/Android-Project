@@ -33,6 +33,10 @@ public class Player {
         this.lifePoints -= lifePoints;
     }
 
+    public Integer getHandSize(){
+        return this.hand.size();
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }
