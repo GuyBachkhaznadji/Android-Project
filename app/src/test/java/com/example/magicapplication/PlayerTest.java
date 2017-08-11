@@ -154,6 +154,7 @@ public class PlayerTest {
     public void testDrawCard(){
         player1.drawCard();
         assertEquals(Arrays.asList(card1), player1.getHand() );
+        assertEquals(9, player1.getDeckSize(), 0.01 );
     }
 
 
@@ -161,6 +162,7 @@ public class PlayerTest {
     public void testStart(){
         player1.start();
         assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7), player1.getHand() );
+        assertEquals(3, player1.getDeckSize(), 0.01 );
     }
 
 }
