@@ -84,9 +84,13 @@ public class PlayerTest {
         assertEquals(1, player1.getHandSize(), 0.01);
     }
 
-//    public ArrayList<Card> getHand() {
-//        return hand;
-//    }
+    @Test
+    public void testRemoveHandCard(){
+        player1.addHandCard(card1);
+        player1.addHandCard(card2);
+        player1.removeHandCard(card2);
+        assertEquals(Arrays.asList(card1), player1.getHand());
+    }
 
     @Test
     public void testGetHand(){
@@ -94,30 +98,35 @@ public class PlayerTest {
         assertEquals(Arrays.asList(card1), player1.getHand());
     }
 
+    @Test
+    public void testGetDeck(){
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10), player1.getDeck());
+    }
 
-//
-//    public void removeHandCard(Card card) {
-//        this.hand.remove(card);
-//    }
-//
-//    public ArrayList<Land> getPlayedLand() {
-//        return playedLand;
-//    }
-//
-//    public void addActiveLand(Land land) {
-//        this.hand.add(land);
-//    }
-//
-//    public ArrayList<Card> getDeck() {
-//        return deck;
-//    }
-//
-//    public void setDeck(ArrayList<Card> deck) {
-//        this.deck = deck;
-//    }
-//
-//    public ArrayList<Card> getGraveyard() {
-//        return graveyard;
-//    }
+    @Test
+    public void testGetGraveyardSize(){
+        assertEquals(0, player1.getGraveyardSize(), 0.01);
+    }
+
+    @Test
+    public void testAddToGraveyard(){
+        player1.addToGraveyard(card1);
+        assertEquals(1, player1.getGraveyardSize(), 0.01);
+    }
+
+    @Test
+    public void testRemoveFromGraveyard(){
+        player1.addToGraveyard(card1);
+        player1.addToGraveyard(card2);
+        player1.removeFromGraveyard(card1);
+        assertEquals(1, player1.getGraveyardSize(), 0.01);
+    }
+
+    @Test
+    public void testGetGraveyard(){
+        player1.addToGraveyard(card1);
+        player1.addToGraveyard(card2);
+        assertEquals(Arrays.asList(card1, card2), player1.getGraveyard());
+    }
 
 }

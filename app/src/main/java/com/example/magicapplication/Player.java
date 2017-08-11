@@ -61,8 +61,16 @@ public class Player {
         return deck;
     }
 
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
+    public Integer getGraveyardSize(){
+        return this.graveyard.size();
+    }
+
+    public void addToGraveyard(Card card) {
+         this.graveyard.add(card);
+    }
+
+    public void removeFromGraveyard(Card card) {
+        this.graveyard.remove(card);
     }
 
     public ArrayList<Card> getGraveyard() {
