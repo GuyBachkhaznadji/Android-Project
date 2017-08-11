@@ -156,4 +156,11 @@ public class PlayerTest {
         assertEquals(Arrays.asList(card1), player1.getHand() );
     }
 
+
+    @Test
+    public void testStart(){
+        player1.start();
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7), player1.getHand() );
+    }
+
 }

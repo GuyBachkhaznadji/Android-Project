@@ -24,6 +24,16 @@ public class Player {
         Collections.shuffle(this.deck);
     }
 
+    public void start(){
+        this.drawCard();
+        this.drawCard();
+        this.drawCard();
+        this.drawCard();
+        this.drawCard();
+        this.drawCard();
+        this.drawCard();
+    }
+
     public void drawCard(){
         this.hand.add(this.deck.get(0));
         this.deck.remove(0);
