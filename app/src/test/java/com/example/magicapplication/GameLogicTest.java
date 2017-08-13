@@ -69,6 +69,19 @@ public class GameLogicTest {
         assertEquals(player2, game.getActivePlayer());
     }
 
+    @Test
+    public void testNextPlayer__player2(){
+        game.nextPlayer();
+        assertEquals(player2, game.getActivePlayer());
+    }
+
+    @Test
+    public void testNextPlayer__player1(){
+        game.nextPlayer();
+        game.nextPlayer();
+        assertEquals(player1, game.getActivePlayer());
+    }
+
 //    @Test
 //    public void testGetHand(){
 //        .addHandCard(card1);

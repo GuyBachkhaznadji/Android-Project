@@ -38,5 +38,14 @@ public class GameLogic {
         this.activePlayer = players.get(index);
     }
 
+    public void nextPlayer(){
+        if (this.activePlayer == players.get(0) ){
+            this.setActivePlayer(1);
+        }
+        else if (this.activePlayer == players.get(1) ){
+            this.setActivePlayer(0);
+        }
+    }
+
 
 }
