@@ -128,27 +128,28 @@ public class GameLogicTest {
     public void testPlayableCards__card6(){
         Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(true);
         Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(5);
-        assertEquals(Arrays.asList(card6), game2.playableCards());
+        assertEquals(Arrays.asList(card6), game2.playableCards(spyPlayer));
     }
 
     @Test
     public void testPlayableCards__Land(){
         Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(false);
         Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(5);
-        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6), game2.playableCards());
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6), game2.playableCards(spyPlayer));
     }
 
     @Test
     public void testPlayableCards__card6Card7(){
         Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(true);
         Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(8);
-        assertEquals(Arrays.asList(card6, card7), game2.playableCards());
+        assertEquals(Arrays.asList(card6, card7), game2.playableCards(spyPlayer));
     }
 
     @Test
     public void testPlayCard__Land(){
-        game2.playCard(card1);
+        game2.playCard(card1, spyPlayer);
         assertEquals(true, game2.getActivePlayer().getHasPlayedLand());
+        assertEquals(Arrays.asList(card1), game2.getActivePlayer().getActiveLand());
     }
 
 
@@ -158,11 +159,48 @@ public class GameLogicTest {
         game2.getActivePlayer().playLand(card1);
         game2.getActivePlayer().playLand(card2);
         game2.getActivePlayer().playLand(card3);
-        game2.playCard(card6);
+        game2.playCard(card6, spyPlayer);
         int result = game2.getActivePlayer().getUntappedLandSize();
         assertEquals(2, result, 0.01);
     }
 
+    @Test
+    public void testGetPlayer1Creature(){
+        assertEquals(Arrays.asList(), game.getPlayer1Creatures());
+    }
+
+    @Test
+    public void testAddPlayer1Creature(){
+        game.addPlayer1Creatures(card6);
+        assertEquals(Arrays.asList(card6), game.getPlayer1Creatures());
+    }
+
+    @Test
+    public void testRemovePlayer1Creature(){
+        game.addPlayer1Creatures(card6);
+        game.addPlayer1Creatures(card7);
+        game.removePlayer1Creatures(card6);
+        assertEquals(Arrays.asList(card7), game.getPlayer1Creatures());
+    }
+
+    @Test
+    public void testGetPlayer2Creature(){
+        assertEquals(Arrays.asList(), game.getPlayer2Creatures());
+    }
+
+    @Test
+    public void testAddPlayer2Creature(){
+        game.addPlayer2Creatures(card6);
+        assertEquals(Arrays.asList(card6), game.getPlayer2Creatures());
+    }
+
+    @Test
+    public void testRemovePlayer2Creature(){
+        game.addPlayer2Creatures(card6);
+        game.addPlayer2Creatures(card7);
+        game.removePlayer2Creatures(card6);
+        assertEquals(Arrays.asList(card7), game.getPlayer2Creatures());
+    }
 
 }
 
