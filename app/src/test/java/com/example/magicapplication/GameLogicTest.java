@@ -29,6 +29,9 @@ public class GameLogicTest {
     Creature card9;
     Creature card10;
     Creature card11;
+    Land card12;
+    Land card13;
+    Land card14;
     ArrayList<Card> deck;
     Player spyPlayer;
     GameLogic spyGame;
@@ -46,6 +49,9 @@ public class GameLogicTest {
         card9 = new Creature("Scute Mob", "Green", 1, 1, 1);
         card10 = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
         card11 = new Creature("Vigor", "Green", 6, 6, 6);
+        card12 = new Land("Forest", "Green");
+        card13 = new Land("Forest", "Green");
+        card14 = new Land("Forest", "Green");
         deck = new ArrayList<Card>();
         deck.add(card1);
         deck.add(card2);
@@ -137,6 +143,24 @@ public class GameLogicTest {
         Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(true);
         Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(8);
         assertEquals(Arrays.asList(card6, card7), game2.playableCards());
+    }
+
+    @Test
+    public void testPlayCard__Land(){
+        game2.playCard(card1);
+        assertEquals(true, game2.getActivePlayer().getHasPlayedLand());
+    }
+
+
+    @Test
+    public void testPlayCard__Creature(){
+        ArrayList<Land> land = new ArrayList<Land>();
+        game2.getActivePlayer().playLand(card1);
+        game2.getActivePlayer().playLand(card2);
+        game2.getActivePlayer().playLand(card3);
+        game2.playCard(card6);
+        int result = game2.getActivePlayer().getUntappedLandSize();
+        assertEquals(2, result, 0.01);
     }
 
 
