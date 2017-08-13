@@ -30,5 +30,13 @@ public class GameLogic {
         return this.activePlayer.getHasPlayedLand();
     }
 
+    public Player getActivePlayer(){
+        return this.activePlayer;
+    }
+
+    public void setActivePlayer(int index){
+        this.activePlayer = players.get(index);
+    }
+
 
 }

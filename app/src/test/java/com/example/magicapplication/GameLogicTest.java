@@ -58,6 +58,23 @@ public class GameLogicTest {
         assertEquals(false, game.hasPlayedLand() );
     }
 
+    @Test
+    public void testGetActivePlayer(){
+        assertEquals(player1, game.getActivePlayer());
+    }
+
+    @Test
+    public void testSetActivePlayer(){
+        game.setActivePlayer(1);
+        assertEquals(player2, game.getActivePlayer());
+    }
+
+//    @Test
+//    public void testGetHand(){
+//        .addHandCard(card1);
+//        assertEquals(Arrays.asList(card1), game.getHand() );
+//    }
+
 
 }
 
