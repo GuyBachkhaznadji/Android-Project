@@ -29,7 +29,6 @@ public class PlayerTest {
         card4 = new Land("Forest", "Green");
         card5 = new Land("Forest", "Green");
         card6 = new Creature("Bond Beetle", "Green", 1, 0, 1);
-        card7 = new Creature("Hydra", "Green", 8, 8 , 8);
         card7 = new Creature("Garruk's Companion", "Green", 2, 3, 2);
         card8 = new Creature("Scute Mob", "Green", 1, 1, 1);
         card9 = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
@@ -125,6 +124,13 @@ public class PlayerTest {
         player1.addToGraveyard(card1);
         player1.addToGraveyard(card2);
         assertEquals(Arrays.asList(card1, card2), player1.getGraveyard());
+    }
+
+    @Test
+    public void testPlayLand(){
+        player1.playLand(card1);
+        assertEquals(1, player1.getActiveLandSize(), 0.01);
+        assertEquals(true, player1.getHasPlayedLand());
     }
 
     @Test

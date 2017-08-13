@@ -88,6 +88,7 @@ public class Player {
 
     public void playLand(Land land){
         this.activeLand.add(land);
+        this.hasPlayedLand = true;
     }
 
     public Integer getActiveLandSize(){
