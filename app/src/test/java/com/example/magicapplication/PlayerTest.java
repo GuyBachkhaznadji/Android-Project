@@ -73,13 +73,13 @@ public class PlayerTest {
 
     @Test
     public void testGetHandSize(){
-        assertEquals(0, player1.getHandSize(), 0.01);
+        assertEquals(7, player1.getHandSize(), 0.01);
     }
 
     @Test
     public void testAddHandCard(){
         player1.addHandCard(card1);
-        assertEquals(1, player1.getHandSize(), 0.01);
+        assertEquals(8, player1.getHandSize(), 0.01);
     }
 
     @Test
@@ -87,18 +87,18 @@ public class PlayerTest {
         player1.addHandCard(card1);
         player1.addHandCard(card2);
         player1.removeHandCard(card2);
-        assertEquals(Arrays.asList(card1), player1.getHand());
+        assertEquals(Arrays.asList(card1, card3, card4, card5, card6, card7, card1, card2), player1.getHand());
     }
 
     @Test
     public void testGetHand(){
         player1.addHandCard(card1);
-        assertEquals(Arrays.asList(card1), player1.getHand());
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card1), player1.getHand());
     }
 
     @Test
     public void testGetDeckSize(){
-        assertEquals(10, player1.getDeckSize(), 0.01 );
+        assertEquals(3, player1.getDeckSize(), 0.01 );
     }
 
     @Test
@@ -160,22 +160,24 @@ public class PlayerTest {
     @Test
     public void testDrawCard(){
         player1.drawCard();
-        assertEquals(Arrays.asList(card1), player1.getHand() );
-        assertEquals(9, player1.getDeckSize(), 0.01 );
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8), player1.getHand() );
+        assertEquals(2, player1.getDeckSize(), 0.01 );
     }
 
     @Test
     public void testDrawCardWithNum(){
         player1.drawCard(2);
-        assertEquals(Arrays.asList(card1, card2), player1.getHand() );
-        assertEquals(8, player1.getDeckSize(), 0.01 );
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9), player1.getHand() );
+        assertEquals(1, player1.getDeckSize(), 0.01 );
     }
 
     @Test
     public void testStart(){
+        ArrayList hand = player1.getHand();
+        hand = null;
         player1.start();
-        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7), player1.getHand() );
-        assertEquals(3, player1.getDeckSize(), 0.01 );
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10), player1.getHand() );
+        assertEquals(0, player1.getDeckSize(), 0.01 );
     }
 
     @Test

@@ -82,6 +82,30 @@ public class GameLogicTest {
         assertEquals(player1, game.getActivePlayer());
     }
 
+    @Test
+    public void testGetRound(){
+        assertEquals("Main 1", game.getRound());
+    }
+
+    @Test
+    public void testSetRound(){
+        game.setRound(5);
+        assertEquals("Swap", game.getRound());
+    }
+
+    @Test
+    public void testNextRound__Main1(){
+        game.setRound(5);
+        game.nextRound();
+        assertEquals("Main 1", game.getRound());
+    }
+
+    @Test
+    public void testNextRound__Attack(){
+        game.nextRound();
+        assertEquals("Attack", game.getRound());
+    }
+
 //    @Test
 //    public void testGetHand(){
 //        .addHandCard(card1);

@@ -6,7 +6,7 @@ public class GameLogic {
     private ArrayList<Player> players;
     private Player activePlayer;
     private ArrayList<String> roundPhases;
-    private Integer round;
+    private String round;
     private ArrayList<Creature> player1Creatures;
     private ArrayList<Creature> player2Creatures;
     private ArrayList<Creature> activeAttackers;
@@ -17,13 +17,14 @@ public class GameLogic {
         this.players.add(player1);
         this.players.add(player2);
         this.roundPhases = new ArrayList<String>();
-        this.roundPhases.add("Main1");
+        this.roundPhases.add("Main 1");
         this.roundPhases.add("Attack");
         this.roundPhases.add("Block");
         this.roundPhases.add("Damage");
-        this.roundPhases.add("Main2");
+        this.roundPhases.add("Main 2");
         this.roundPhases.add("Swap");
         this.activePlayer = player1;
+        this.setRound(0);
     }
 
     public boolean hasPlayedLand(){
@@ -35,7 +36,7 @@ public class GameLogic {
     }
 
     public void setActivePlayer(int index){
-        this.activePlayer = players.get(index);
+        this.activePlayer = this.players.get(index);
     }
 
     public void nextPlayer(){
@@ -47,5 +48,22 @@ public class GameLogic {
         }
     }
 
+    public String getRound() {
+        return this.round;
+    }
+
+    public void setRound(int index) {
+        this.round = this.roundPhases.get(index);;
+    }
+
+    public void nextRound(){
+        int index = this.roundPhases.indexOf(this.round);
+        index += 1;
+        if (index < 6){
+            this.setRound(index);
+        } else if (index == 6 ){
+            this.setRound(0);
+        }
+    }
 
 }

@@ -20,6 +20,7 @@ public class Player {
         this.activeLand = new ArrayList<Land>();
         this.graveyard = new ArrayList<Card>();
         this.hasPlayedLand = false;
+        this.start();
     }
 
     public void shuffleDeck(){
