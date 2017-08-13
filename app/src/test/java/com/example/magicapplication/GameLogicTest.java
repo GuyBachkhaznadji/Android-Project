@@ -2,14 +2,20 @@ package com.example.magicapplication;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import static junit.framework.Assert.*;
+import org.mockito.*;
+import static org.mockito.Mockito.*;
 
 
 public class GameLogicTest {
 
     GameLogic game;
+    GameLogic game2;
     Player player1;
     Player player2;
     Land card1;
@@ -22,7 +28,10 @@ public class GameLogicTest {
     Creature card8;
     Creature card9;
     Creature card10;
+    Creature card11;
     ArrayList<Card> deck;
+    Player spyPlayer;
+    GameLogic spyGame;
 
     @Before
     public void before(){
@@ -33,10 +42,10 @@ public class GameLogicTest {
         card5 = new Land("Forest", "Green");
         card6 = new Creature("Bond Beetle", "Green", 1, 0, 1);
         card7 = new Creature("Hydra", "Green", 8, 8 , 8);
-        card7 = new Creature("Garruk's Companion", "Green", 2, 3, 2);
-        card8 = new Creature("Scute Mob", "Green", 1, 1, 1);
-        card9 = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
-        card10 = new Creature("Vigor", "Green", 6, 6, 6);
+        card8 = new Creature("Garruk's Companion", "Green", 2, 3, 2);
+        card9 = new Creature("Scute Mob", "Green", 1, 1, 1);
+        card10 = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
+        card11 = new Creature("Vigor", "Green", 6, 6, 6);
         deck = new ArrayList<Card>();
         deck.add(card1);
         deck.add(card2);
@@ -51,6 +60,9 @@ public class GameLogicTest {
         player1 = new Player(deck);
         player2 = new Player(deck);
         game = new GameLogic(player1, player2);
+        spyGame = Mockito.spy(game);
+        spyPlayer = Mockito.spy(player1);
+        game2 = new GameLogic(spyPlayer, player2);
     }
 
     @Test
@@ -84,7 +96,7 @@ public class GameLogicTest {
 
     @Test
     public void testGetRound(){
-        assertEquals("Main 1", game.getRound());
+        assertEquals("Main", game.getRound());
     }
 
     @Test
@@ -97,7 +109,7 @@ public class GameLogicTest {
     public void testNextRound__Main1(){
         game.setRound(5);
         game.nextRound();
-        assertEquals("Main 1", game.getRound());
+        assertEquals("Main", game.getRound());
     }
 
     @Test
@@ -106,11 +118,26 @@ public class GameLogicTest {
         assertEquals("Attack", game.getRound());
     }
 
-//    @Test
-//    public void testGetHand(){
-//        .addHandCard(card1);
-//        assertEquals(Arrays.asList(card1), game.getHand() );
-//    }
+    @Test
+    public void testPlayableCards__card6(){
+        Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(true);
+        Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(5);
+        assertEquals(Arrays.asList(card6), game2.playableCards());
+    }
+
+    @Test
+    public void testPlayableCards__Land(){
+        Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(false);
+        Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(5);
+        assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6), game2.playableCards());
+    }
+
+    @Test
+    public void testPlayableCards__card6Card7(){
+        Mockito.when(spyPlayer.getHasPlayedLand()).thenReturn(true);
+        Mockito.when(spyPlayer.getUntappedLandSize()).thenReturn(8);
+        assertEquals(Arrays.asList(card6, card7), game2.playableCards());
+    }
 
 
 }

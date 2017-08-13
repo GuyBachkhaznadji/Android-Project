@@ -130,13 +130,13 @@ public class PlayerTest {
     @Test
     public void testActiveLandSize(){
         player1.playLand(card1);
-        assertEquals(1, player1.getactiveLandSize(), 0.01);
+        assertEquals(1, player1.getActiveLandSize(), 0.01);
     }
 
     @Test
     public void testGetActiveLand(){
         player1.playLand(card1);
-        assertEquals(Arrays.asList(card1), player1.getactiveLand());
+        assertEquals(Arrays.asList(card1), player1.getActiveLand());
     }
 
     @Test

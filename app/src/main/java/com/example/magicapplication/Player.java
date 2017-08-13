@@ -65,6 +65,7 @@ public class Player {
     public void addLifePoints(Integer lifePoints) {
         this.lifePoints += lifePoints;
     }
+
     public void removeLifePoints(Integer lifePoints) {
         this.lifePoints -= lifePoints;
     }
@@ -89,11 +90,11 @@ public class Player {
         this.activeLand.add(land);
     }
 
-    public Integer getactiveLandSize(){
+    public Integer getActiveLandSize(){
         return this.activeLand.size();
     }
 
-    public ArrayList<Land> getactiveLand() {
+    public ArrayList<Land> getActiveLand() {
         return activeLand;
     }
 
@@ -108,12 +109,12 @@ public class Player {
         return untappedLand;
     }
 
-    public ArrayList<Card> getDeck() {
-        return deck;
+    public Integer getUntappedLandSize(){
+        return this.getUntappedLand().size();
     }
 
-    public Integer getUntappedLandSize(){
-       return this.getUntappedLand().size();
+    public ArrayList<Card> getDeck() {
+        return deck;
     }
 
     public Integer getGraveyardSize(){
