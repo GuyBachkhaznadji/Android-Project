@@ -202,5 +202,17 @@ public class GameLogicTest {
         assertEquals(Arrays.asList(card7), game.getPlayer2Creatures());
     }
 
+    @Test
+    public void testAddCreatureToBattleField__Player1(){
+        game.addCreatureToBattleField(card6, player1);
+        assertEquals(Arrays.asList(card6), game.getPlayer1Creatures());
+    }
+
+    @Test
+    public void testAddCreatureToBattleField__Player2(){
+        game.addCreatureToBattleField(card6, player2);
+        assertEquals(Arrays.asList(card6), game.getPlayer2Creatures());
+    }
+
 }
 
