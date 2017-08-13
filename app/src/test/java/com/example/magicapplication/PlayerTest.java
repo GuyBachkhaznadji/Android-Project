@@ -130,15 +130,15 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayLand(){
+    public void testActiveLandSize(){
         player1.playLand(card1);
-        assertEquals(1, player1.getPlayedLandSize(), 0.01);
+        assertEquals(1, player1.getactiveLandSize(), 0.01);
     }
 
     @Test
-    public void testGetPlayedLand(){
+    public void testGetActiveLand(){
         player1.playLand(card1);
-        assertEquals(Arrays.asList(card1), player1.getPlayedLand());
+        assertEquals(Arrays.asList(card1), player1.getactiveLand());
     }
 
     @Test
@@ -178,6 +178,17 @@ public class PlayerTest {
         player1.start();
         assertEquals(Arrays.asList(card1, card2, card3, card4, card5, card6, card7), player1.getHand() );
         assertEquals(3, player1.getDeckSize(), 0.01 );
+    }
+
+    @Test
+    public void testGetPlayedLand(){
+        assertEquals(false, player1.getHasPlayedLand() );
+    }
+
+    @Test
+    public void testHasPlayedLand(){
+        player1.setPlayedLand(true);
+        assertEquals(true, player1.getHasPlayedLand() );
     }
 
 }

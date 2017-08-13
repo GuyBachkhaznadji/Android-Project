@@ -8,16 +8,18 @@ public class Player {
     private Integer lifePoints;
     private ArrayList<Card> deck;
     private ArrayList<Card> hand;
-    private ArrayList<Land> playedLand;
+    private ArrayList<Land> activeLand;
     private ArrayList<Card> graveyard;
+    private Boolean hasPlayedLand;
 
     public Player(ArrayList<Card> deck){
         this.lifePoints = 20;
         this.deck = deck;
 //        this.shuffleDeck();
         this.hand = new ArrayList<Card>();
-        this.playedLand = new ArrayList<Land>();
+        this.activeLand = new ArrayList<Land>();
         this.graveyard = new ArrayList<Card>();
+        this.hasPlayedLand = false;
     }
 
     public void shuffleDeck(){
@@ -83,21 +85,21 @@ public class Player {
     }
 
     public void playLand(Land land){
-        this.playedLand.add(land);
+        this.activeLand.add(land);
     }
 
-    public Integer getPlayedLandSize(){
-        return this.playedLand.size();
+    public Integer getactiveLandSize(){
+        return this.activeLand.size();
     }
 
-    public ArrayList<Land> getPlayedLand() {
-        return playedLand;
+    public ArrayList<Land> getactiveLand() {
+        return activeLand;
     }
 
     public ArrayList<Land> getUntappedLand() {
         ArrayList<Land> untappedLand = new ArrayList<Land>();
 
-        for (Land land : this.playedLand){
+        for (Land land : this.activeLand){
             if (land.getTapped() == false){
                 untappedLand.add(land);
             }
@@ -127,5 +129,13 @@ public class Player {
 
     public ArrayList<Card> getGraveyard() {
         return graveyard;
+    }
+
+    public boolean getHasPlayedLand() {
+        return hasPlayedLand;
+    }
+
+    public void setPlayedLand(boolean hasPlayedLand) {
+        this.hasPlayedLand = hasPlayedLand;
     }
 }
