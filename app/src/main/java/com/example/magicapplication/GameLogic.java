@@ -23,6 +23,11 @@ public class GameLogic {
         this.roundPhases.add("Damage");
         this.roundPhases.add("Main2");
         this.roundPhases.add("Swap");
+        this.activePlayer = player1;
+    }
+
+    public boolean hasPlayedLand(){
+        return this.activePlayer.getHasPlayedLand();
     }
 
 

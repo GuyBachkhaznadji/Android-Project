@@ -2,10 +2,8 @@ package com.example.magicapplication;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import static junit.framework.Assert.*;
 
 public class PlayerTest {
