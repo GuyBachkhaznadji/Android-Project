@@ -116,6 +116,11 @@ public class GameLogicTest {
     }
 
     @Test
+    public void testGetNonActivePlayer(){
+        assertEquals(player2, game.getNonActivePlayer());
+    }
+
+    @Test
     public void testSetActivePlayer(){
         game.setActivePlayer(1);
         assertEquals(player2, game.getActivePlayer());
