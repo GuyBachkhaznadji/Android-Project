@@ -291,7 +291,7 @@ public class GameLogicTest {
     }
 
     @Test
-    public void testuntapActivePlayerCreatures(){
+    public void testUntapActivePlayerCreatures(){
         card6.setTapped(true);
         card7.setTapped(true);
         game.addPlayer1Creatures(card6);
@@ -301,6 +301,14 @@ public class GameLogicTest {
         assertEquals(false, game.getActivePlayerCreatures().get(1).getTapped() );
     }
 
+    @Test
+    public void testGetAbleToAttack(){
+        card6.setTapped(true);
+        card7.setTapped(false);
+        game.addPlayer1Creatures(card6);
+        game.addPlayer1Creatures(card7);
+        assertEquals(Arrays.asList(card7), game.getAbleToAttack(game.getActivePlayerCreatures()) );
+    }
 
 }
 
