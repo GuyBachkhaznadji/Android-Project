@@ -420,5 +420,11 @@ public class GameLogicTest {
         assertEquals(false, result);
     }
 
+    @Test
+    public void testGetLand(){
+        Land land = game.getLand(game.getActivePlayer().getHand());
+        assertEquals(card5, land);
+    }
+
 }
 
