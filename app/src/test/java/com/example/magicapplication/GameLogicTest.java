@@ -426,5 +426,11 @@ public class GameLogicTest {
         assertEquals(card5, land);
     }
 
+    @Test
+    public void testBestCreature(){
+        Creature creature = game.bestCreature(game.getActivePlayer().getHand());
+        assertEquals(card7, creature);
+    }
+
 }
 
