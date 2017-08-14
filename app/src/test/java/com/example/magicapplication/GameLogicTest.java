@@ -275,5 +275,21 @@ public class GameLogicTest {
         assertEquals(player1, game.whoDead() );
     }
 
+    @Test
+    public void testGetActivePlayerCreatures__player1(){
+        game.addPlayer1Creatures(card6);
+        game.addPlayer1Creatures(card7);
+        assertEquals(Arrays.asList(card6,card7), game.getActivePlayerCreatures() );
+    }
+
+    @Test
+    public void testGetActivePlayerCreatures__player2(){
+        game.addPlayer2Creatures(card6);
+        game.addPlayer2Creatures(card7);
+        game.nextPlayer();
+        assertEquals(Arrays.asList(card6,card7), game.getActivePlayerCreatures() );
+    }
+
+
 }
 
