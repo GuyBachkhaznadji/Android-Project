@@ -224,6 +224,7 @@ public class GameLogicTest {
     public void testAddActiveAttackers(){
         game.addActiveAttacker(card6);
         assertEquals(Arrays.asList(card6), game.getActiveAttackers());
+        assertEquals(true, card6.getAttacking());
     }
 
     @Test
@@ -245,6 +246,23 @@ public class GameLogicTest {
         game.addActiveAttacker(card7);
         assertEquals(11, game.attack(player2));
         assertEquals(9, game.getPlayer(1).getLifePoints(), 0.01 );
+    }
+
+    @Test
+    public void testAnyoneDead__false(){
+        assertEquals(false, game.anyoneDead() );
+    }
+
+    @Test
+    public void testAnyoneDead__0True(){
+        player1.setLifePoints(0);
+        assertEquals(true, game.anyoneDead() );
+    }
+
+    @Test
+    public void testAnyoneDead__True(){
+        player1.setLifePoints(-10);
+        assertEquals(true, game.anyoneDead() );
     }
 
 }
