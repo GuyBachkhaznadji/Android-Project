@@ -226,5 +226,26 @@ public class GameLogicTest {
         assertEquals(Arrays.asList(card6), game.getActiveAttackers());
     }
 
+    @Test
+    public void testRemoveActiveAttackers(){
+        game.addActiveAttacker(card6);
+        game.addActiveAttacker(card7);
+        game.removeActiveAttacker(card7);
+        assertEquals(Arrays.asList(card6), game.getActiveAttackers());
+    }
+
+    @Test
+    public void testGetPlayer(){
+        assertEquals(player2, game.getPlayer(1) );
+    }
+
+    @Test
+    public void testAttack(){
+        game.addActiveAttacker(card8);
+        game.addActiveAttacker(card7);
+        assertEquals(11, game.attack(player2));
+        assertEquals(9, game.getPlayer(1).getLifePoints(), 0.01 );
+    }
+
 }
 
