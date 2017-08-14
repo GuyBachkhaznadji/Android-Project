@@ -454,6 +454,15 @@ public class GameLogicTest {
     }
 
     @Test
+    public void testGetBestCreature__1(){
+        ArrayList<Card> cards = game.getActivePlayer().getHand();
+        cards.clear();
+        cards.add(card6);
+        Creature creature = game.getBestCreature(cards);
+        assertEquals(card6, creature);
+    }
+
+    @Test
     public void testLogicalAttacker(){
         ArrayList<Creature> potentialAttackers = new ArrayList<Creature>();
         ArrayList<Creature> potentialDefenders = new ArrayList<Creature>();
@@ -462,6 +471,47 @@ public class GameLogicTest {
         potentialDefenders.add(card10);
         ArrayList<Creature> attackers = game.logicalAttackers(potentialAttackers, potentialDefenders);
         assertEquals(Arrays.asList(card7), attackers);
+    }
+
+    @Test
+    public void testComputerPlayCreature(){
+        game.getActivePlayer().playLand(card1);
+        game.computerPlayCreature(game.playableCards(game.getActivePlayer() ) );
+        assertEquals(1, game.getActivePlayerCreatures().size());
+    }
+
+    @Test
+    public void testComputerTurn__Land(){
+        game.nextPlayer();
+        game.computerTurn();
+        assertEquals(1, game.getActivePlayer().getActiveLandSize(), 0.01);
+    }
+
+    @Test
+    public void testComputerTurn__PlayCreature(){
+        game.nextPlayer();
+        game.computerTurn();
+        assertEquals(1, game.getActivePlayerCreatures().size(), 0.01);
+    }
+
+    @Test
+    public void testComputerTurn__Play2Creatures(){
+        game.nextPlayer();
+        game.getActivePlayer().addHandCard(cardF);
+        game.getActivePlayer().playLand(cardA);
+        game.getActivePlayer().setPlayedLand(false);
+        game.computerTurn();
+        assertEquals(2, game.getActivePlayerCreatures().size(), 0.01);
+    }
+
+    @Test
+    public void testComputerTurn__Attack(){
+        game.nextPlayer();
+        game.getActivePlayer().addHandCard(cardF);
+        game.getActivePlayer().playLand(cardA);
+        game.getActivePlayer().setPlayedLand(false);
+        game.computerTurn();
+        assertEquals(2, game.getActivePlayerCreatures().size(), 0.01);
     }
 
 }
