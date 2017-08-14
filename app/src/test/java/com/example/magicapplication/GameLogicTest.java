@@ -448,5 +448,16 @@ public class GameLogicTest {
         assertEquals(card7, creature);
     }
 
+    @Test
+    public void testLogicalAttacker(){
+        ArrayList<Creature> potentialAttackers = new ArrayList<Creature>();
+        ArrayList<Creature> potentialDefenders = new ArrayList<Creature>();
+        potentialAttackers.add(card6);
+        potentialAttackers.add(card7);
+        potentialDefenders.add(card10);
+        ArrayList<Creature> attackers = game.logicalAttackers(potentialAttackers, potentialDefenders);
+        assertEquals(Arrays.asList(card7), attackers);
+    }
+
 }
 
