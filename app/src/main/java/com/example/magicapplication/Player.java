@@ -11,6 +11,7 @@ public class Player {
     private ArrayList<Land> activeLand;
     private ArrayList<Card> graveyard;
     private Boolean hasPlayedLand;
+    private boolean dead;
 
     public Player(ArrayList<Card> deck){
         this.lifePoints = 20;
@@ -20,6 +21,7 @@ public class Player {
         this.activeLand = new ArrayList<Land>();
         this.graveyard = new ArrayList<Card>();
         this.hasPlayedLand = false;
+        this.dead = false;
         this.start();
     }
 
@@ -140,5 +142,13 @@ public class Player {
 
     public void setPlayedLand(boolean hasPlayedLand) {
         this.hasPlayedLand = hasPlayedLand;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
 }

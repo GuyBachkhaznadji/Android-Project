@@ -197,4 +197,15 @@ public class PlayerTest {
         assertEquals(true, player1.getHasPlayedLand() );
     }
 
+    @Test
+    public void testIsDead(){
+        assertEquals(false, player1.isDead() );
+    }
+
+    @Test
+    public void testSetDead(){
+        player1.setDead(true);
+        assertEquals(true, player1.isDead() );
+    }
+
 }
