@@ -394,5 +394,31 @@ public class GameLogicTest {
         assertEquals(8, game.getActivePlayer().getHandSize(), 0.01 );
     }
 
+    @Test
+    public void testContainsLand__true(){
+        boolean result = game.containsLand( game.getActivePlayer().getHand() );
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void testContainsLand__false(){
+        game.getActivePlayer().getHand().clear();
+        boolean result = game.containsLand( game.getActivePlayer().getHand() );
+        assertEquals(false, result);
+    }
+
+    @Test
+    public void testContainsCreature__true(){
+        boolean result = game.containsCreature( game.getActivePlayer().getHand() );
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void testContainsCreature__false(){
+        game.getActivePlayer().getHand().clear();
+        boolean result = game.containsCreature( game.getActivePlayer().getHand() );
+        assertEquals(false, result);
+    }
+
 }
 
