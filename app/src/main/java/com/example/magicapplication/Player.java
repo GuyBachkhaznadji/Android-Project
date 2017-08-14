@@ -37,8 +37,9 @@ public class Player {
         if (this.deck.size() >= 1) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
+        } else if (deck.size() == 0) {
+            this.dead = true;
         }
-//            else { MAKE THEM LOSE }
     }
 
     public void drawCard(int numCards){
@@ -46,8 +47,9 @@ public class Player {
             if (this.deck.size() >= 1) {
                 this.hand.add(this.deck.get(0));
                 this.deck.remove(0);
+            } else if (deck.size() == 0) {
+                this.dead = true;
             }
-//            else { MAKE THEM LOSE }
         }
     }
 
@@ -76,7 +78,6 @@ public class Player {
 //            this.gameover;
         }
     }
-
 
 
     public Integer getHandSize(){
