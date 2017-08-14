@@ -9,6 +9,7 @@ import static junit.framework.Assert.*;
 public class PlayerTest {
 
     Player player1;
+    Player player2;
     Land card1;
     Land card2;
     Land card3;
@@ -20,6 +21,18 @@ public class PlayerTest {
     Creature card9;
     Creature card10;
     ArrayList<Card> deck;
+    ArrayList<Card> deck2;
+    Land cardA;
+    Land cardB;
+    Land cardC;
+    Land cardD;
+    Land cardE;
+    Creature cardF;
+    Creature cardG;
+    Creature cardH;
+    Creature cardI;
+    Creature cardJ;
+    Creature cardK;
 
     @Before
     public void before(){
@@ -44,7 +57,19 @@ public class PlayerTest {
         deck.add(card8);
         deck.add(card9);
         deck.add(card10);
+        deck2 = new ArrayList<Card>();
+        deck2.add(cardA);
+        deck2.add(cardB);
+        deck2.add(cardC);
+        deck2.add(cardD);
+        deck2.add(cardE);
+        deck2.add(cardF);
+        deck2.add(cardG);
+        deck2.add(cardH);
+        deck2.add(cardI);
+        deck2.add(cardJ);
         player1 = new Player(deck);
+        player2 = new Player(deck2);
     }
 
     @Test
@@ -72,7 +97,7 @@ public class PlayerTest {
 
     @Test
     public void testGetHandSize(){
-        assertEquals(7, player1.getHandSize(), 0.01);
+        assertEquals(7, player2.getHandSize(), 0.01);
     }
 
     @Test

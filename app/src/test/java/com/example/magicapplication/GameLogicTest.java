@@ -32,7 +32,19 @@ public class GameLogicTest {
     Land card12;
     Land card13;
     Land card14;
-    ArrayList<Card> deck;
+    Land cardA;
+    Land cardB;
+    Land cardC;
+    Land cardD;
+    Land cardE;
+    Creature cardF;
+    Creature cardG;
+    Creature cardH;
+    Creature cardI;
+    Creature cardJ;
+    Creature cardK;
+    ArrayList<Card> deck1;
+    ArrayList<Card> deck2;
     Player spyPlayer;
     GameLogic spyGame;
 
@@ -52,19 +64,41 @@ public class GameLogicTest {
         card12 = new Land("Forest", "Green");
         card13 = new Land("Forest", "Green");
         card14 = new Land("Forest", "Green");
-        deck = new ArrayList<Card>();
-        deck.add(card1);
-        deck.add(card2);
-        deck.add(card3);
-        deck.add(card4);
-        deck.add(card5);
-        deck.add(card6);
-        deck.add(card7);
-        deck.add(card8);
-        deck.add(card9);
-        deck.add(card10);
-        player1 = new Player(deck);
-        player2 = new Player(deck);
+        cardA = new Land("Forest", "Green");
+        cardB = new Land("Forest", "Green");
+        cardC = new Land("Forest", "Green");
+        cardD = new Land("Forest", "Green");
+        cardE = new Land("Forest", "Green");
+        cardF = new Creature("Bond Beetle", "Green", 1, 0, 1);
+        cardG = new Creature("Hydra", "Green", 8, 8 , 8);
+        cardH = new Creature("Garruk's Companion", "Green", 2, 3, 2);
+        cardI = new Creature("Scute Mob", "Green", 1, 1, 1);
+        cardJ = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
+        cardK = new Creature("Vigor", "Green", 6, 6, 6);
+        deck1 = new ArrayList<Card>();
+        deck1.add(card1);
+        deck1.add(card2);
+        deck1.add(card3);
+        deck1.add(card4);
+        deck1.add(card5);
+        deck1.add(card6);
+        deck1.add(card7);
+        deck1.add(card8);
+        deck1.add(card9);
+        deck1.add(card10);
+        deck2 = new ArrayList<Card>();
+        deck2.add(cardA);
+        deck2.add(cardB);
+        deck2.add(cardC);
+        deck2.add(cardD);
+        deck2.add(cardE);
+        deck2.add(cardF);
+        deck2.add(cardG);
+        deck2.add(cardH);
+        deck2.add(cardI);
+        deck2.add(cardJ);
+        player1 = new Player(deck1);
+        player2 = new Player(deck2);
         game = new GameLogic(player1, player2);
         spyGame = Mockito.spy(game);
         spyPlayer = Mockito.spy(player1);
@@ -222,6 +256,7 @@ public class GameLogicTest {
 
     @Test
     public void testAddActiveAttackers(){
+        card6.setTapped(false);
         game.addActiveAttacker(card6);
         assertEquals(Arrays.asList(card6), game.getActiveAttackers());
         assertEquals(true, card6.getAttacking());
@@ -229,6 +264,8 @@ public class GameLogicTest {
 
     @Test
     public void testRemoveActiveAttackers(){
+        card6.setTapped(false);
+        card7.setTapped(false);
         game.addActiveAttacker(card6);
         game.addActiveAttacker(card7);
         game.removeActiveAttacker(card7);
@@ -242,8 +279,10 @@ public class GameLogicTest {
 
     @Test
     public void testAttack(){
-        game.addActiveAttacker(card8);
+        card7.setTapped(false);
+        card8.setTapped(false);
         game.addActiveAttacker(card7);
+        game.addActiveAttacker(card8);
         assertEquals(11, game.attack(player2));
         assertEquals(9, game.getPlayer(1).getLifePoints(), 0.01 );
         assertEquals(true, card8.getTapped() );
@@ -308,6 +347,51 @@ public class GameLogicTest {
         game.addPlayer1Creatures(card6);
         game.addPlayer1Creatures(card7);
         assertEquals(Arrays.asList(card7), game.getAbleToAttack(game.getActivePlayerCreatures()) );
+    }
+
+    @Test
+    public void testSwap__NextActivePlayer() {
+        game.swap();
+        assertEquals(player2, game.getActivePlayer() );
+    }
+
+    @Test
+    public void testSwap__NextRound() {
+        game.setRound(5);
+        game.swap();
+        assertEquals("Main", game.getRound());
+    }
+
+    @Test
+    public void testSwap__UntappedLand() {
+        card1.setTapped(true);
+        card2.setTapped(true);
+        card3.setTapped(true);
+        card4.setTapped(true);
+        player2.playLand(card1);
+        player2.playLand(card2);
+        player2.playLand(card3);
+        player2.playLand(card4);
+        player2.playLand(card5);
+        game.swap();
+        assertEquals(5, game.getActivePlayer().getUntappedLandSize(), 0.01 );
+    }
+
+    @Test
+    public void testSwap__UntappedCreatures() {
+        card6.setTapped(true);
+        card7.setTapped(true);
+        game.addPlayer2Creatures(card6);
+        game.addPlayer2Creatures(card7);
+        game.swap();
+        assertEquals(false, game.getActivePlayerCreatures().get(0).getTapped() );
+        assertEquals(false, game.getActivePlayerCreatures().get(1).getTapped() );
+    }
+
+    @Test
+    public void testSwap__HandSize() {
+        game.swap();
+        assertEquals(8, game.getActivePlayer().getHandSize(), 0.01 );
     }
 
 }
