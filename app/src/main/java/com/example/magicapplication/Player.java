@@ -62,6 +62,7 @@ public class Player {
 
     public void setLifePoints(Integer lifePoints) {
         this.lifePoints = lifePoints;
+        this.amDead();
     }
 
     public void addLifePoints(Integer lifePoints) {
@@ -116,6 +117,12 @@ public class Player {
             }
         }
         return untappedLand;
+    }
+
+    public void untappAllLand(){
+        for (Land land : activeLand){
+            land.setTapped(false);
+        }
     }
 
     public Integer getUntappedLandSize(){

@@ -215,4 +215,19 @@ public class PlayerTest {
         assertEquals(true, player1.isDead() );
     }
 
+    @Test
+    public void testUntapAllLand(){
+        card1.setTapped(true);
+        card2.setTapped(true);
+        card3.setTapped(true);
+        card4.setTapped(true);
+        player1.playLand(card1);
+        player1.playLand(card2);
+        player1.playLand(card3);
+        player1.playLand(card4);
+        player1.playLand(card5);
+        player1.untappAllLand();
+        assertEquals(5, player1.getUntappedLandSize(), 0.01 );
+    }
+
 }
