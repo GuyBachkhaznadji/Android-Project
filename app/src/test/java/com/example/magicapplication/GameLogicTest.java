@@ -427,8 +427,8 @@ public class GameLogicTest {
     }
 
     @Test
-    public void testBestCreature(){
-        Creature creature = game.bestCreature(game.getActivePlayer().getHand());
+    public void testGetBestCreature(){
+        Creature creature = game.getBestCreature(game.getActivePlayer().getHand());
         assertEquals(card7, creature);
     }
 
