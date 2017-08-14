@@ -203,15 +203,27 @@ public class GameLogicTest {
     }
 
     @Test
-    public void testAddCreatureToBattleField__Player1(){
-        game.addCreatureToBattleField(card6, player1);
+    public void testAddCreatureToBattlefield__Player1(){
+        game.addCreatureToBattlefield(card6, player1);
         assertEquals(Arrays.asList(card6), game.getPlayer1Creatures());
     }
 
     @Test
-    public void testAddCreatureToBattleField__Player2(){
-        game.addCreatureToBattleField(card6, player2);
+    public void testAddCreatureToBattlefield__Player2(){
+        game.addCreatureToBattlefield(card6, player2);
         assertEquals(Arrays.asList(card6), game.getPlayer2Creatures());
+    }
+
+    @Test
+    public void testGetActiveAttackers(){
+        assertEquals(Arrays.asList(), game.getActiveAttackers());
+    }
+
+
+    @Test
+    public void testAddActiveAttackers(){
+        game.addActiveAttacker(card6);
+        assertEquals(Arrays.asList(card6), game.getActiveAttackers());
     }
 
 }
