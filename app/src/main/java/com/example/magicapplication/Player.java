@@ -70,7 +70,13 @@ public class Player {
 
     public void removeLifePoints(Integer lifePoints) {
         this.lifePoints -= lifePoints;
+        this.amDead();
+        if (this.dead){
+//            this.gameover;
+        }
     }
+
+
 
     public Integer getHandSize(){
         return this.hand.size();
@@ -150,5 +156,11 @@ public class Player {
 
     public void setDead(boolean dead) {
         this.dead = dead;
+    }
+
+    public void amDead(){
+        if (this.lifePoints <= 0){
+            this.setDead(true);
+        }
     }
 }

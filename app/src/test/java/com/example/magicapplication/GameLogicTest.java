@@ -259,14 +259,20 @@ public class GameLogicTest {
 
     @Test
     public void testAnyoneDead__0True(){
-        player1.setLifePoints(0);
+        player1.removeLifePoints(20);
         assertEquals(true, game.anyoneDead() );
     }
 
     @Test
     public void testAnyoneDead__True(){
-        player1.setLifePoints(-10);
+        player1.removeLifePoints(30);
         assertEquals(true, game.anyoneDead() );
+    }
+
+    @Test
+    public void testWhoDead(){
+        player1.setDead(true);
+        assertEquals(player1, game.whoDead() );
     }
 
 }

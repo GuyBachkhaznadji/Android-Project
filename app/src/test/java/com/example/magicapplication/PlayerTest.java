@@ -208,4 +208,11 @@ public class PlayerTest {
         assertEquals(true, player1.isDead() );
     }
 
+    @Test
+    public void testAmDead(){
+        player1.setLifePoints(0);
+        player1.amDead();
+        assertEquals(true, player1.isDead() );
+    }
+
 }
