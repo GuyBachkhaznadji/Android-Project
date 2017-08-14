@@ -330,6 +330,22 @@ public class GameLogicTest {
     }
 
     @Test
+    public void testGetNonActivePlayerCreatures__player1(){
+        game.addPlayer1Creatures(card6);
+        game.addPlayer1Creatures(card7);
+        game.nextPlayer();
+        assertEquals(Arrays.asList(card6,card7), game.getNonActivePlayerCreatures() );
+    }
+
+    @Test
+    public void testGetNonActivePlayerCreatures__player2(){
+        game.addPlayer2Creatures(card6);
+        game.addPlayer2Creatures(card7);
+        assertEquals(Arrays.asList(card6,card7), game.getNonActivePlayerCreatures() );
+    }
+
+
+    @Test
     public void testUntapActivePlayerCreatures(){
         card6.setTapped(true);
         card7.setTapped(true);
