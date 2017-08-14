@@ -246,6 +246,10 @@ public class GameLogicTest {
         game.addActiveAttacker(card7);
         assertEquals(11, game.attack(player2));
         assertEquals(9, game.getPlayer(1).getLifePoints(), 0.01 );
+        assertEquals(true, card8.getTapped() );
+        assertEquals(false, card8.getAttacking() );
+        assertEquals(Arrays.asList(), game.getActiveAttackers() );
+        assertEquals(9, game.getPlayer(1).getLifePoints(), 0.01 );
     }
 
     @Test
