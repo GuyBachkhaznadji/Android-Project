@@ -211,7 +211,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView22"
@@ -322,28 +323,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/attackers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/central_buffer"
-        app:layout_constraintTop_toTopOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/defenders"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/central_buffer"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <android.support.v7.widget.RecyclerView
         android:id="@+id/player1_land"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -386,5 +365,27 @@
             app:layout_constraintTop_toBottomOf="@+id/textView22"
             app:layout_constraintVertical_bias="1.0" />
     </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/defenders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/central_buffer"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/central_buffer"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/attackers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/central_buffer"
+        app:layout_constraintTop_toTopOf="@+id/central_buffer"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

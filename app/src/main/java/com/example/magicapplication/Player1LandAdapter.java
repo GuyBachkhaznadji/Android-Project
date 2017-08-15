@@ -8,15 +8,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class Player1HandAdapter extends RecyclerView.Adapter<Player1HandAdapter.ViewHolder> {
-    private ArrayList<Card> player1HandRaw;
+class Player1LandAdapter extends RecyclerView.Adapter<Player1LandAdapter.ViewHolder> {
+    private ArrayList<Land> player1LandRaw;
 
-    Player1HandAdapter(ArrayList<Card> player1HandRaw) {
-        this.player1HandRaw = player1HandRaw;
+    Player1LandAdapter(ArrayList<Land> player1HandRaw) {
+        this.player1LandRaw = player1HandRaw;
     }
 
     @Override
-    public Player1HandAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Player1LandAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, parent, false);
 
         RecyclerView.ViewHolder vh = new ViewHolder(v);
@@ -24,13 +24,13 @@ class Player1HandAdapter extends RecyclerView.Adapter<Player1HandAdapter.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(Player1HandAdapter.ViewHolder holder, int position) {
-        holder.name.setText(player1HandRaw.get(position).getName());
+    public void onBindViewHolder(Player1LandAdapter.ViewHolder holder, int position) {
+        holder.name.setText(player1LandRaw.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return player1HandRaw.size();
+        return player1LandRaw.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

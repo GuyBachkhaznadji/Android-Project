@@ -9,11 +9,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MagicActivity extends AppCompatActivity {
+    private GameLogic game;
     private TextView playerHandSize;
     private RecyclerView player1Hand;
     private RecyclerView.LayoutManager player1HandLayoutManager;
     private RecyclerView.Adapter player1HandAdapter;
-    private GameLogic game;
+    private RecyclerView player1Land;
+    private RecyclerView.LayoutManager player1LandLayoutManager;
+    private RecyclerView.Adapter player1LandAdapter;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +72,7 @@ public class MagicActivity extends AppCompatActivity {
         TextView playerHandSize = (TextView) findViewById(R.id.player1_hand_size);
         playerHandSize.setText(game.getPlayer(0).getHandSize().toString());
         ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
+        ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
 
 
         player1Hand = (RecyclerView) findViewById(R.id.player1_hand);
@@ -76,6 +81,13 @@ public class MagicActivity extends AppCompatActivity {
         player1Hand.setLayoutManager(player1HandLayoutManager);
         player1HandAdapter = new Player1HandAdapter(player1HandRaw);
         player1Hand.setAdapter(player1HandAdapter);
+
+        player1Land = (RecyclerView) findViewById(R.id.player1_land);
+        player1Land.setHasFixedSize(true);
+        player1LandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        player1Land.setLayoutManager(player1LandLayoutManager);
+        player1LandAdapter = new Player1LandAdapter(player1LandRaw);
+        player1Land.setAdapter(player1LandAdapter);
     }
 
 
