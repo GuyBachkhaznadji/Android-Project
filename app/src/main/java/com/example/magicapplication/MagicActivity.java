@@ -20,6 +20,9 @@ public class MagicActivity extends AppCompatActivity {
     private RecyclerView player1Creatures;
     private RecyclerView.LayoutManager player1CreaturesLayoutManager;
     private RecyclerView.Adapter player1CreaturesAdapter;
+    private RecyclerView attackers;
+    private RecyclerView.LayoutManager attackersLayoutManager;
+    private RecyclerView.Adapter attackersAdapter;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,7 @@ public class MagicActivity extends AppCompatActivity {
         ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
         ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
         ArrayList<Creature> player1CreaturesRaw = game.getPlayer1Creatures();
+        ArrayList<Creature> attackersRaw = game.getActiveAttackers();
 
 
         player1Hand = (RecyclerView) findViewById(R.id.player1_hand);
@@ -99,6 +103,13 @@ public class MagicActivity extends AppCompatActivity {
         player1Creatures.setLayoutManager(player1CreaturesLayoutManager);
         player1CreaturesAdapter = new Player1CreaturesAdapter(player1CreaturesRaw);
         player1Creatures.setAdapter(player1CreaturesAdapter);
+
+        attackers = (RecyclerView) findViewById(R.id.attackers);
+        attackers.setHasFixedSize(true);
+        attackersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        attackers.setLayoutManager(attackersLayoutManager);
+        attackersAdapter = new AttackersAdapter(attackersRaw);
+        attackers.setAdapter(attackersAdapter);
 
     }
 
