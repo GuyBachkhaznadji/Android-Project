@@ -318,7 +318,7 @@
         app:layout_constraintBottom_toTopOf="@+id/player1_hand"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/attackers"
-        app:layout_constraintRight_toLeftOf="@+id/defenders"
+        app:layout_constraintRight_toLeftOf="@+id/blockers"
         app:layout_constraintTop_toBottomOf="@+id/central_buffer"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -367,7 +367,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/defenders"
+        android:id="@+id/blockers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
