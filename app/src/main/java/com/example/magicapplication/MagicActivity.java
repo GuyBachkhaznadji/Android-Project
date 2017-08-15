@@ -10,7 +10,19 @@ import java.util.ArrayList;
 
 public class MagicActivity extends AppCompatActivity {
     private GameLogic game;
-    private TextView playerHandSize;
+    private TextView player1Name;
+    private TextView player2Name;
+    private TextView player1Lifepoints;
+    private TextView player1HandSize;
+    private TextView player1Deck;
+    private TextView player1Graveyard;
+    private TextView player2Lifepoints;
+    private TextView player2HandSize;
+    private TextView player2Deck;
+    private TextView player2Graveyard;
+    private TextView player2TappedLand;
+    private Integer player2TappedLandSize;
+    private TextView player2UntappedLand;
     private RecyclerView player1Hand;
     private RecyclerView.LayoutManager player1HandLayoutManager;
     private RecyclerView.Adapter player1HandAdapter;
@@ -77,9 +89,46 @@ public class MagicActivity extends AppCompatActivity {
         Player player1 = new Player(deck1);
         Player player2 = new Player(deck2);
         this.game = new GameLogic(player1, player2);
+//        Add a name to Players!
+        this.player1Name = (TextView) findViewById(R.id.player1_name );
+        player1Name.setText("Challenger");
 
-        TextView playerHandSize = (TextView) findViewById(R.id.player1_hand_size);
-        playerHandSize.setText(game.getPlayer(0).getHandSize().toString());
+        this.player2Name = (TextView) findViewById(R.id.player2_name );
+        player2Name.setText("Planeswalker");
+
+        this.player1Lifepoints = (TextView) findViewById(R.id.player1_lifepoints );
+        player1Lifepoints.setText(game.getPlayer(0).getLifePoints().toString());
+
+        this.player1HandSize = (TextView) findViewById(R.id.player1_hand_size);
+        player1HandSize.setText(game.getPlayer(0).getHandSize().toString());
+
+        this.player1Deck = (TextView) findViewById(R.id.player1_deck );
+        player1Deck.setText(game.getPlayer(0).getDeckSize().toString());
+
+        this.player1Graveyard = (TextView) findViewById(R.id.player1_grave );
+        player1Graveyard.setText(game.getPlayer(0).getGraveyardSize().toString());
+
+        this.player2Lifepoints = (TextView) findViewById(R.id.player2_lifepoints );
+        player2Lifepoints.setText(game.getPlayer(1).getLifePoints().toString());
+
+        this.player2HandSize = (TextView) findViewById(R.id.player2_hand_size);
+        player2HandSize.setText(game.getPlayer(1).getHandSize().toString());
+
+        this.player2Deck = (TextView) findViewById(R.id.player2_deck );
+        player2Deck.setText(game.getPlayer(1).getDeckSize().toString());
+
+        this.player2Graveyard = (TextView) findViewById(R.id.player2_graveyard );
+        player2Graveyard.setText(game.getPlayer(1).getGraveyardSize().toString());
+
+        this.player2TappedLand = (TextView) findViewById(R.id.player2_tapped_land );
+        int allPlayer2Land = game.getPlayer(1).getActiveLandSize();
+        int allPlayer2UntappedLand = game.getPlayer(1).getUntappedLandSize();
+        this.player2TappedLandSize = (allPlayer2Land - allPlayer2UntappedLand);
+        player2TappedLand.setText(player2TappedLandSize.toString());
+
+        this.player2UntappedLand = (TextView) findViewById(R.id.player2_untapped_land );
+        player2UntappedLand.setText(game.getPlayer(1).getUntappedLandSize().toString());
+
         ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
         ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
         ArrayList<Creature> player1CreaturesRaw = game.getPlayer1Creatures();
