@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Magic, The Gathering</string>
+    <string name="player1_name"></string>
+    <string name="player1_hand_size"></string>
+    <string name="player1_graveyard"></string>
+    <string name="player1_lifepoints"></string>
+    <string name="player1_hand"></string>
+    <string name="player1_deck"></string>
+    <string name="player1_creatures"></string>
+    <string name="player1_land"></string>
+    <string name="player2_name"></string>
+    <string name="player2_hand_size"></string>
+    <string name="player2_lifepoints"></string>
+    <string name="player2_deck"></string>
+    <string name="player2_tapped_land"></string>
+    <string name="player2_graveyard"></string>
+    <string name="player2_tapped_creatures"></string>
+    <string name="player2_untapped_land"></string>
+    <string name="player2_untapped_creatures"></string>
 </resources>
