@@ -17,6 +17,9 @@ public class MagicActivity extends AppCompatActivity {
     private RecyclerView player1Land;
     private RecyclerView.LayoutManager player1LandLayoutManager;
     private RecyclerView.Adapter player1LandAdapter;
+    private RecyclerView player1Creatures;
+    private RecyclerView.LayoutManager player1CreaturesLayoutManager;
+    private RecyclerView.Adapter player1CreaturesAdapter;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,7 @@ public class MagicActivity extends AppCompatActivity {
         playerHandSize.setText(game.getPlayer(0).getHandSize().toString());
         ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
         ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
+        ArrayList<Creature> player1CreaturesRaw = game.getPlayer1Creatures();
 
 
         player1Hand = (RecyclerView) findViewById(R.id.player1_hand);
@@ -88,6 +92,14 @@ public class MagicActivity extends AppCompatActivity {
         player1Land.setLayoutManager(player1LandLayoutManager);
         player1LandAdapter = new Player1LandAdapter(player1LandRaw);
         player1Land.setAdapter(player1LandAdapter);
+
+        player1Creatures = (RecyclerView) findViewById(R.id.player1_creatures);
+        player1Creatures.setHasFixedSize(true);
+        player1CreaturesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        player1Creatures.setLayoutManager(player1CreaturesLayoutManager);
+        player1CreaturesAdapter = new Player1CreaturesAdapter(player1CreaturesRaw);
+        player1Creatures.setAdapter(player1CreaturesAdapter);
+
     }
 
 

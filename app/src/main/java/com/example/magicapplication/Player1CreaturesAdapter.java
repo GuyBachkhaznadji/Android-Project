@@ -8,15 +8,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class Player1LandAdapter extends RecyclerView.Adapter<Player1LandAdapter.ViewHolder> {
-    private ArrayList<Land> player1LandRaw;
+class Player1CreaturesAdapter extends RecyclerView.Adapter<Player1CreaturesAdapter.ViewHolder> {
+    private ArrayList<Creature> player1CreaturesRaw;
 
-    Player1LandAdapter(ArrayList<Land> player1HandRaw) {
-        this.player1LandRaw = player1HandRaw;
+    Player1CreaturesAdapter(ArrayList<Creature> player1CreaturesRaw) {
+        this.player1CreaturesRaw = player1CreaturesRaw;
     }
 
     @Override
-    public Player1LandAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Player1CreaturesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.small_row, parent, false);
 
         RecyclerView.ViewHolder vh = new ViewHolder(v);
@@ -24,13 +24,13 @@ class Player1LandAdapter extends RecyclerView.Adapter<Player1LandAdapter.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(Player1LandAdapter.ViewHolder holder, int position) {
-        holder.name.setText(player1LandRaw.get(position).getName());
+    public void onBindViewHolder(Player1CreaturesAdapter.ViewHolder holder, int position) {
+        holder.name.setText(player1CreaturesRaw.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return player1LandRaw.size();
+        return player1CreaturesRaw.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
