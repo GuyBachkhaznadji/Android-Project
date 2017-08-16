@@ -219,11 +219,13 @@ public class MagicActivity extends AppCompatActivity {
             this.createHand();
             this.createPlayer1Land();
             this.createPlayerStats();
-        } else if (!game.playable(cardToPlay, game.getPlayer(0))){
+        } else if (!game.playable(cardToPlay, game.getPlayer(0) ) && (cardToPlay instanceof Creature) ){
             Toast.makeText(this, "Insufficient mana!", Toast.LENGTH_SHORT).show();
+        } else if (!game.playable(cardToPlay, game.getPlayer(0) ) && cardToPlay instanceof Land ){
+            Toast.makeText(this, "You've already played Land this turn!", Toast.LENGTH_LONG).show();
         }
-
     }
 
-
 }
+
+
