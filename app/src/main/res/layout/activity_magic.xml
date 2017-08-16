@@ -1,391 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.magicapplication.MagicActivity">
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="5dp"
-        android:layout_height="49dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView20"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="5dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="10dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player2_tapped_creatures"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_tapped_creatures"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView19"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="5dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="5dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="10dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_grave"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/player2_untapped_land"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_untapped_land"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView16"
-        app:layout_constraintRight_toLeftOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player2_untapped_creatures"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_untapped_creatures"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView18"
-        app:layout_constraintRight_toLeftOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player1_name"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player1_name"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView25"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/player1_grave"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:text="@string/player1_graveyard"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView25"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/player1_lifepoints"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player1_lifepoints"
-        app:layout_constraintBottom_toBottomOf="@+id/player1_grave"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView23"
-        app:layout_constraintRight_toLeftOf="@+id/textView25"
-        app:layout_constraintTop_toTopOf="@+id/textView23"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player1_hand_size"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player1_hand_size"
-        app:layout_constraintBottom_toTopOf="@+id/player1_grave"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView25"
-        app:layout_constraintRight_toLeftOf="@+id/textView26"
-        app:layout_constraintTop_toTopOf="@+id/textView26"
-        app:layout_constraintVertical_bias="0.0" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/player1_deck"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:text="@string/player1_deck"
-        app:layout_constraintBottom_toTopOf="@+id/player1_grave"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView26"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView26"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_above="@+id/player1_graveyard"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
-        android:id="@+id/central_buffer"
-        android:layout_width="5dp"
-        android:layout_height="100dp"
-        android:autoText="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="0dp"
-        android:layout_height="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="0.296" />
+        android:id="@+id/textView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/player2_name"
+        android:text="@string/player2_hand_size" />
 
     <TextView
         android:id="@+id/player2_name"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:text="@string/player2_name"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player2_hand_size"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_hand_size"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/player2_name" />
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="@string/player2_name" />
 
     <TextView
         android:id="@+id/player2_deck"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_deck"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView21"
-        app:layout_constraintRight_toLeftOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/player2_name" />
-
-    <TextView
-        android:id="@+id/player2_lifepoints"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_lifepoints"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView20"
-        app:layout_constraintRight_toLeftOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/player2_name"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player2_tapped_land"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/player2_tapped_land"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView17"
-        app:layout_constraintRight_toLeftOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="@string/player2_deck" />
 
     <TextView
         android:id="@+id/player2_graveyard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:text="@string/player2_graveyard"
-        app:layout_constraintBottom_toTopOf="@+id/central_buffer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/player1_hand"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_below="@+id/player2_lifepoints"
+        android:layout_toRightOf="@+id/player2_deck"
+        android:layout_toEndOf="@+id/player2_deck" />
 
     <TextView
-        android:id="@+id/lower_central_buffer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_hand"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/attackers"
-        app:layout_constraintRight_toLeftOf="@+id/blockers"
-        app:layout_constraintTop_toBottomOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/player2_lifepoints"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/player2_lifepoints"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/player2_name"
+        android:layout_toEndOf="@+id/player2_name" />
+
+    <TextView
+        android:id="@+id/player2_tapped_land"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:text="@string/player2_tapped_land"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/player2_graveyard"
+        android:layout_toEndOf="@+id/player2_graveyard" />
+
+    <TextView
+        android:id="@+id/player2_untapped_land"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:text="@string/player2_untapped_land"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/player2_tapped_land"
+        android:layout_toEndOf="@+id/player2_tapped_land" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/player1_land"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/lower_central_buffer"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/player1_creatures"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/lower_central_buffer"
-        app:layout_constraintTop_toBottomOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="32dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.887"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22"
-            app:layout_constraintVertical_bias="1.0" />
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/blockers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/central_buffer"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/player2_creatures"
+        android:layout_width="800dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/player2_untapped_land"
+        android:layout_toEndOf="@+id/player2_untapped_land" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/attackers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/player1_creatures"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/central_buffer"
-        app:layout_constraintTop_toTopOf="@+id/central_buffer"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="640dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/player2_graveyard"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/blockers"
+        android:layout_width="640dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/player2_creatures"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/player1_creatures"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/attackers"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/player1_land"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/player1_creatures"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/player1_hand"
+        android:layout_width="1000dp"
+        android:layout_height="225dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/player1_lifepoints"
+        android:layout_toStartOf="@+id/player1_lifepoints" />
+
+    <TextView
+        android:id="@+id/player1_lifepoints"
+        android:layout_width="80dp"
+        android:layout_height="225dp"
+        android:text="@string/player1_lifepoints"
+        android:layout_below="@+id/player1_land"
+        android:layout_toLeftOf="@+id/player1_name"
+        android:layout_toStartOf="@+id/player1_name" />
+
+    <TextView
+        android:id="@+id/player1_name"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/player1_deck"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/player1_name"
+        android:layout_below="@+id/player1_land" />
+
+    <TextView
+        android:id="@+id/player1_hand_size"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/player1_hand_size"
+        android:layout_alignBaseline="@+id/player1_deck"
+        android:layout_alignBottom="@+id/player1_deck"
+        android:layout_toLeftOf="@+id/player1_deck"
+        android:layout_toStartOf="@+id/player1_deck" />
+
+    <TextView
+        android:id="@+id/player1_graveyard"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:text="@string/player1_graveyard"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/player1_lifepoints"
+        android:layout_toEndOf="@+id/player1_lifepoints" />
+</RelativeLayout>

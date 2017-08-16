@@ -17,10 +17,11 @@ class BlockersAdapter extends RecyclerView.Adapter<BlockersAdapter.ViewHolder> {
 
     @Override
     public BlockersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.small_row, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.small_row, parent, false);
 
-        RecyclerView.ViewHolder vh = new ViewHolder(v);
-        return (ViewHolder) vh;
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
     @Override
@@ -38,7 +39,7 @@ class BlockersAdapter extends RecyclerView.Adapter<BlockersAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
+            name = itemView.findViewById(R.id.name);
         }
     }
 }

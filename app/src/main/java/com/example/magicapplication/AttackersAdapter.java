@@ -17,10 +17,11 @@ class AttackersAdapter extends RecyclerView.Adapter<AttackersAdapter.ViewHolder>
 
     @Override
     public AttackersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.small_row, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.small_row, parent, false);
 
-        RecyclerView.ViewHolder vh = new ViewHolder(v);
-        return (ViewHolder) vh;
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
     @Override
@@ -38,7 +39,7 @@ class AttackersAdapter extends RecyclerView.Adapter<AttackersAdapter.ViewHolder>
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
+            name = itemView.findViewById(R.id.name);
         }
     }
 }
