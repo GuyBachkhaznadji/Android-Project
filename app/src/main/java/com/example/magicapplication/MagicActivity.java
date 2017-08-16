@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class MagicActivity extends AppCompatActivity {
     private GameLogic game;
+    private ArrayList<Card> deck1;
+    private ArrayList<Card> deck2;
     private TextView currentPhase;
     private TextView player1Name;
     private TextView player2Name;
@@ -75,7 +77,7 @@ public class MagicActivity extends AppCompatActivity {
         Card cardI = new Creature("Scute Mob", "Green", 1, 1, 1);
         Card cardJ = new Creature("Pelkka Wurm", "Green", 7, 7, 7);
         Card cardK = new Creature("Vigor", "Green", 6, 6, 6);
-        ArrayList<Card> deck1 = new ArrayList<Card>();
+        this.deck1 = new ArrayList<Card>();
         deck1.add(card1);
         deck1.add(card2);
         deck1.add(card3);
@@ -86,7 +88,7 @@ public class MagicActivity extends AppCompatActivity {
         deck1.add(card8);
         deck1.add(card9);
         deck1.add(card10);
-        ArrayList<Card> deck2 = new ArrayList<Card>();
+        this.deck2 = new ArrayList<Card>();
         deck2.add(cardA);
         deck2.add(cardB);
         deck2.add(cardC);
@@ -206,7 +208,7 @@ public class MagicActivity extends AppCompatActivity {
     }
 
     public void createAttackers(){
-        ArrayList<Creature> attackersRaw = game.getActiveBlockers();
+        ArrayList<Creature> attackersRaw = game.getActiveAttackers();
         this.attackers = (RecyclerView) findViewById(R.id.attackers);
         this.attackers.setHasFixedSize(true);
         this.attackersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -242,23 +244,96 @@ public class MagicActivity extends AppCompatActivity {
         }
     }
 
-    public void onAttackClick(View chosenCreature){
+    public void onAttackClick(View chosenCreature) {
         Creature creatureToAttack = (Creature) chosenCreature.getTag();
-        Log.d("Attacker: ", creatureToAttack.getName() );
-
-        if (creatureToAttack.getTapped() ){
+        Log.d("Attacker: ", creatureToAttack.getName());
+        if (creatureToAttack.getTapped()) {
             Toast.makeText(this, "Creature Tapped!", Toast.LENGTH_SHORT).show();
-        } else if(!creatureToAttack.getTapped()){
+        } else if (!creatureToAttack.getTapped()) {
             game.addActiveAttacker(creatureToAttack);
             Toast.makeText(this, "Creature now attacking!", Toast.LENGTH_SHORT).show();
             this.createPlayerStats();
             this.createAttackers();
             this.createPlayer1Creatures();
         }
-
-
     }
 
+    public void onNextPhaseClick(View button){
+        if (game.isGameover()){
+            if (game.getPlayer(0).isDead() ){
+                Toast.makeText(this, "You lost! Better luck next time.", Toast.LENGTH_LONG).show();
+                Player player1 = new Player(deck1);
+                Player player2 = new Player(deck2);
+                this.game = new GameLogic(player1, player2);
+            } else if (game.getPlayer(1).isDead()){
+                Toast.makeText(this, "Well done, you won!", Toast.LENGTH_LONG).show();
+                Player player1 = new Player(deck1);
+                Player player2 = new Player(deck2);
+                this.game = new GameLogic(player1, player2);
+            }
+        } else if (game.getRound() == "Main"){
+            game.nextRound();
+            this.createPlayerStats();
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayer1Creatures();
+            this.createPlayer2Creatures();
+            this.createAttackers();
+            this.createBlockers();
+        } else if (game.getRound() == "Attack") {
+            int damage = game.attack(game.getPlayer(1));
+            Toast.makeText(this, "You did " + damage + " damage!", Toast.LENGTH_LONG).show();
+            game.nextRound();
+            this.createPlayerStats();
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayer1Creatures();
+            this.createPlayer2Creatures();
+            this.createAttackers();
+            this.createBlockers();
+        } else if (game.getRound() == "Block"){
+            game.nextRound();
+            this.createPlayerStats();
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayer1Creatures();
+            this.createPlayer2Creatures();
+            this.createAttackers();
+            this.createBlockers();
+        } else if (game.getRound() == "Damage"){
+            game.nextRound();
+            this.createPlayerStats();
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayer1Creatures();
+            this.createPlayer2Creatures();
+            this.createAttackers();
+            this.createBlockers();
+        } else if (game.getRound() == "End"){
+            game.nextRound();
+            this.createPlayerStats();
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayer1Creatures();
+            this.createPlayer2Creatures();
+            this.createAttackers();
+            this.createBlockers();
+        } else if (game.getRound() == "Swap"){
+            game.swap();
+            if (game.getActivePlayer() == game.getPlayer(1)){
+                game.computerTurn();
+                game.swap();
+                this.createPlayerStats();
+                this.createHand();
+                this.createPlayer1Land();
+                this.createPlayer1Creatures();
+                this.createPlayer2Creatures();
+                this.createAttackers();
+                this.createBlockers();
+            }
+        }
+    }
 }
+
 
 

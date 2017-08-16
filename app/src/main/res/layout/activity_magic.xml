@@ -225,10 +225,11 @@
         android:id="@+id/next_phase"
         android:layout_width="80dp"
         android:layout_height="110dp"
-        android:text="@string/next_phase"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/player1_hand"
         android:layout_toRightOf="@+id/player1_hand"
-        android:layout_toEndOf="@+id/player1_hand" />
+        android:onClick="onNextPhaseClick"
+        android:text="@string/next_phase" />
 
     <TextView
         android:id="@+id/current_phase"
