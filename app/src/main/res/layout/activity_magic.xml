@@ -13,13 +13,13 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/player2_hand_size"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:text="@string/player2_hand_size"
         android:layout_below="@+id/player2_name"
-        android:text="@string/player2_hand_size" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/player2_name"
@@ -31,10 +31,10 @@
         android:id="@+id/player2_deck"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_alignBaseline="@+id/player2_hand_size"
+        android:layout_alignBottom="@+id/player2_hand_size"
+        android:layout_toEndOf="@+id/player2_hand_size"
+        android:layout_toRightOf="@+id/player2_hand_size"
         android:text="@string/player2_deck" />
 
     <TextView

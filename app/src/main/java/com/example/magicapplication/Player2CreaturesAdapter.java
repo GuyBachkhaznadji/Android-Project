@@ -8,15 +8,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class BlockersAdapter extends RecyclerView.Adapter<BlockersAdapter.ViewHolder> {
-    private ArrayList<Creature> blockersRaw;
+class Player2CreaturesAdapter extends RecyclerView.Adapter<Player2CreaturesAdapter.ViewHolder> {
+    private ArrayList<Creature> player2CreaturesRaw;
 
-    BlockersAdapter(ArrayList<Creature> blockersRaw) {
-        this.blockersRaw = blockersRaw;
+    Player2CreaturesAdapter(ArrayList<Creature> player2CreaturesRaw) {
+        this.player2CreaturesRaw = player2CreaturesRaw;
     }
 
     @Override
-    public BlockersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Player2CreaturesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.small_row, parent, false);
 
@@ -25,13 +25,13 @@ class BlockersAdapter extends RecyclerView.Adapter<BlockersAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(BlockersAdapter.ViewHolder holder, int position) {
-        holder.name.setText(blockersRaw.get(position).getName());
+    public void onBindViewHolder(Player2CreaturesAdapter.ViewHolder holder, int position) {
+        holder.name.setText(player2CreaturesRaw.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return blockersRaw.size();
+        return player2CreaturesRaw.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
