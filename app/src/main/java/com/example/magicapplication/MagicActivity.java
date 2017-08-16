@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -212,10 +213,16 @@ public class MagicActivity extends AppCompatActivity {
     public void onPlayableClick(View chosenCard){
         Card cardToPlay = (Card) chosenCard.getTag();
         Log.d("Card: ", cardToPlay.getName() );
-        game.playCard(cardToPlay, game.getPlayer(0));
-        this.createHand();
-        this.createPlayer1Land();
-        this.createPlayerStats();
+
+        if (game.playable(cardToPlay, game.getPlayer(0))){
+            game.playCard(cardToPlay, game.getPlayer(0));
+            this.createHand();
+            this.createPlayer1Land();
+            this.createPlayerStats();
+        } else if (!game.playable(cardToPlay, game.getPlayer(0))){
+            Toast.makeText(this, "Insufficient mana!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
