@@ -3,7 +3,9 @@
     android:layout_margin="12dp"
     android:layout_width="75dp"
     android:layout_height="100dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:onClick="onPlayableClick">
 
     <TextView
         android:id="@+id/name"

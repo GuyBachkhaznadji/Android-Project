@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class MagicActivity extends AppCompatActivity {
     private RecyclerView blockers;
     private RecyclerView.LayoutManager blockersLayoutManager;
     private RecyclerView.Adapter blockersAdapter;
+    private Button nextRound;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,91 +103,120 @@ public class MagicActivity extends AppCompatActivity {
         this.player2Name = (TextView) findViewById(R.id.player2_name );
         player2Name.setText("Planeswalker");
 
+        this.createPlayerStats();
+        this.createHand();
+        this.createPlayer1Land();
+        this.createPlayer1Creatures();
+        this.createPlayer2Creatures();
+        this.createAttackers();
+        this.createBlockers();
+
+    }
+
+    private void createPlayerStats() {
         this.player1Lifepoints = (TextView) findViewById(R.id.player1_lifepoints );
-        player1Lifepoints.setText("LifePoints " + game.getPlayer(0).getLifePoints().toString());
+        player1Lifepoints.setText("LifePoints \n" + game.getPlayer(0).getLifePoints().toString());
 
         this.player1HandSize = (TextView) findViewById(R.id.player1_hand_size);
-        player1HandSize.setText("Hand " + game.getPlayer(0).getHandSize().toString());
+        player1HandSize.setText("Hand \n" + game.getPlayer(0).getHandSize().toString());
 
         this.player1Deck = (TextView) findViewById(R.id.player1_deck );
-        player1Deck.setText("Deck " + game.getPlayer(0).getDeckSize().toString());
+        player1Deck.setText("Deck \n" + game.getPlayer(0).getDeckSize().toString());
 
         this.player1Graveyard = (TextView) findViewById(R.id.player1_graveyard );
-        player1Graveyard.setText("Graveyard " + game.getPlayer(0).getGraveyardSize().toString());
+        player1Graveyard.setText("Graveyard \n" + game.getPlayer(0).getGraveyardSize().toString());
 
         this.player2Lifepoints = (TextView) findViewById(R.id.player2_lifepoints );
-        player2Lifepoints.setText("Lifepoints " + game.getPlayer(1).getLifePoints().toString());
+        player2Lifepoints.setText("Lifepoints \n" + game.getPlayer(1).getLifePoints().toString());
 
         this.player2HandSize = (TextView) findViewById(R.id.player2_hand_size);
-        player2HandSize.setText("Hand " + game.getPlayer(1).getHandSize().toString());
+        player2HandSize.setText("Hand \n" + game.getPlayer(1).getHandSize().toString());
 
         this.player2Deck = (TextView) findViewById(R.id.player2_deck );
-        player2Deck.setText("Deck " + game.getPlayer(1).getDeckSize().toString());
+        player2Deck.setText("Deck \n" + game.getPlayer(1).getDeckSize().toString());
 
         this.player2Graveyard = (TextView) findViewById(R.id.player2_graveyard );
-        player2Graveyard.setText("Graveyard " + game.getPlayer(1).getGraveyardSize().toString());
+        player2Graveyard.setText("Graveyard \n" + game.getPlayer(1).getGraveyardSize().toString());
 
         this.player2TappedLand = (TextView) findViewById(R.id.player2_tapped_land );
         int allPlayer2Land = game.getPlayer(1).getActiveLandSize();
         int allPlayer2UntappedLand = game.getPlayer(1).getUntappedLandSize();
         this.player2TappedLandSize = (allPlayer2Land - allPlayer2UntappedLand);
-        player2TappedLand.setText("Tapped Land " + player2TappedLandSize.toString());
+        player2TappedLand.setText("Tapped Land \n" + player2TappedLandSize.toString());
 
         this.player2UntappedLand = (TextView) findViewById(R.id.player2_untapped_land );
-        player2UntappedLand.setText("Untapped Land " + game.getPlayer(1).getUntappedLandSize().toString());
+        player2UntappedLand.setText("Untapped Land \n" + game.getPlayer(1).getUntappedLandSize().toString());
+    }
 
-        ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
-        ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
-        ArrayList<Creature> player1CreaturesRaw = game.getPlayer1Creatures();
-        ArrayList<Creature> player2CreaturesRaw = game.getPlayer2Creatures();
+    private void createAttackers() {
         ArrayList<Creature> attackersRaw = game.getActiveAttackers();
-        ArrayList<Creature> blockersRaw = game.getActiveBlockers();
-
-
-        this.player1Hand = (RecyclerView) findViewById(R.id.player1_hand);
-        this.player1Hand.setHasFixedSize(true);
-        this.player1HandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        this.player1Hand.setLayoutManager(player1HandLayoutManager);
-        this.player1HandAdapter = new Player1HandAdapter(player1HandRaw);
-        this.player1Hand.setAdapter(player1HandAdapter);
-
-        this.player1Land = (RecyclerView) findViewById(R.id.player1_land);
-        this.player1Land.setHasFixedSize(true);
-        this.player1LandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        this.player1Land.setLayoutManager(player1LandLayoutManager);
-        this.player1LandAdapter = new Player1LandAdapter(player1LandRaw);
-        this.player1Land.setAdapter(player1LandAdapter);
-
-        this.player1Creatures = (RecyclerView) findViewById(R.id.player1_creatures);
-        this.player1Creatures.setHasFixedSize(true);
-        this.player1CreaturesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        this.player1Creatures.setLayoutManager(player1CreaturesLayoutManager);
-        this.player1CreaturesAdapter = new Player1CreaturesAdapter(player1CreaturesRaw);
-        this.player1Creatures.setAdapter(player1CreaturesAdapter);
-
-        this.player2Creatures = (RecyclerView) findViewById(R.id.player2_creatures);
-        this.player2Creatures.setHasFixedSize(true);
-        this.player2CreaturesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        this.player2Creatures.setLayoutManager(player2CreaturesLayoutManager);
-        this.player2CreaturesAdapter = new Player2CreaturesAdapter(player2CreaturesRaw);
-        this.player2Creatures.setAdapter(player2CreaturesAdapter);
-
         this.attackers = (RecyclerView) findViewById(R.id.attackers);
         this.attackers.setHasFixedSize(true);
         this.attackersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         this.attackers.setLayoutManager(attackersLayoutManager);
         this.attackersAdapter = new AttackersAdapter(attackersRaw);
         this.attackers.setAdapter(attackersAdapter);
+    }
 
+    private void createPlayer2Creatures() {
+        ArrayList<Creature> player2CreaturesRaw = game.getPlayer2Creatures();
+        this.player2Creatures = (RecyclerView) findViewById(R.id.player2_creatures);
+        this.player2Creatures.setHasFixedSize(true);
+        this.player2CreaturesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        this.player2Creatures.setLayoutManager(player2CreaturesLayoutManager);
+        this.player2CreaturesAdapter = new Player2CreaturesAdapter(player2CreaturesRaw);
+        this.player2Creatures.setAdapter(player2CreaturesAdapter);
+    }
+
+    private void createPlayer1Creatures() {
+        ArrayList<Creature> player1CreaturesRaw = game.getPlayer1Creatures();
+        this.player1Creatures = (RecyclerView) findViewById(R.id.player1_creatures);
+        this.player1Creatures.setHasFixedSize(true);
+        this.player1CreaturesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        this.player1Creatures.setLayoutManager(player1CreaturesLayoutManager);
+        this.player1CreaturesAdapter = new Player1CreaturesAdapter(player1CreaturesRaw);
+        this.player1Creatures.setAdapter(player1CreaturesAdapter);
+    }
+
+    public void createHand(){
+        ArrayList<Card> player1HandRaw = game.getPlayer(0).getHand();
+        this.player1Hand = (RecyclerView) findViewById(R.id.player1_hand);
+        this.player1Hand.setHasFixedSize(true);
+        this.player1HandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        this.player1Hand.setLayoutManager(player1HandLayoutManager);
+        this.player1HandAdapter = new Player1HandAdapter(player1HandRaw);
+        this.player1Hand.setAdapter(player1HandAdapter);
+        Log.d("Cards: ", game.getPlayer(0).getHandSize().toString() );
+    }
+
+    public void createPlayer1Land(){
+        ArrayList<Land> player1LandRaw = game.getPlayer(0).getActiveLand();
+        this.player1Land = (RecyclerView) findViewById(R.id.player1_land);
+        this.player1Land.setHasFixedSize(true);
+        this.player1LandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        this.player1Land.setLayoutManager(player1LandLayoutManager);
+        this.player1LandAdapter = new Player1LandAdapter(player1LandRaw);
+        this.player1Land.setAdapter(player1LandAdapter);
+    }
+
+    public void createBlockers(){
+        ArrayList<Creature> blockersRaw = game.getActiveBlockers();
         this.blockers = (RecyclerView) findViewById(R.id.blockers);
         this.blockers.setHasFixedSize(true);
         this.blockersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         this.blockers.setLayoutManager(blockersLayoutManager);
         this.blockersAdapter = new BlockersAdapter(blockersRaw);
         this.blockers.setAdapter(blockersAdapter);
-
     }
 
+    public void onPlayableClick(View chosenCard){
+        Card cardToPlay = (Card) chosenCard.getTag();
+        Log.d("Card: ", cardToPlay.getName() );
+        game.playCard(cardToPlay, game.getPlayer(0));
+        this.createHand();
+        this.createPlayer1Land();
+        this.createPlayerStats();
+    }
 
 
 }

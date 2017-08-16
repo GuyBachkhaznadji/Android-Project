@@ -186,9 +186,10 @@ public class GameLogicTest {
 
     @Test
     public void testPlayCard__Land(){
-        game2.playCard(card1, spyPlayer);
-        assertEquals(true, game2.getActivePlayer().getHasPlayedLand());
-        assertEquals(Arrays.asList(card1), game2.getActivePlayer().getActiveLand());
+        game.playCard(card1, player1);
+        assertEquals(true, game.getActivePlayer().getHasPlayedLand());
+        assertEquals(Arrays.asList(card1), game.getActivePlayer().getActiveLand());
+        assertEquals(6, game.getActivePlayer().getHandSize(), 0.01);
     }
 
 
