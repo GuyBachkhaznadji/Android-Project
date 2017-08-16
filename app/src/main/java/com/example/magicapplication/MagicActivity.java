@@ -193,7 +193,7 @@ public class MagicActivity extends AppCompatActivity {
         this.player1Hand.setHasFixedSize(true);
         this.player1HandLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         this.player1Hand.setLayoutManager(player1HandLayoutManager);
-        this.player1HandAdapter = new Player1HandAdapter(player1HandRaw);
+        this.player1HandAdapter = new Player1HandAdapter(player1HandRaw, this.game);
         this.player1Hand.setAdapter(player1HandAdapter);
         Log.d("Cards: ", game.getPlayer(0).getHandSize().toString() );
 

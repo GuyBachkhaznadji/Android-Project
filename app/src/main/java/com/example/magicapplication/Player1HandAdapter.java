@@ -11,10 +11,12 @@ import java.util.ArrayList;
 
 class Player1HandAdapter extends RecyclerView.Adapter<Player1HandAdapter.ViewHolder> {
     private ArrayList<Card> player1HandRaw;
+    private GameLogic game;
     private View v;
 
-    Player1HandAdapter(ArrayList<Card> player1HandRaw) {
+    Player1HandAdapter(ArrayList<Card> player1HandRaw, GameLogic game) {
         this.player1HandRaw = player1HandRaw;
+        this.game = game;
     }
 
     @Override
@@ -29,6 +31,14 @@ class Player1HandAdapter extends RecyclerView.Adapter<Player1HandAdapter.ViewHol
     public void onBindViewHolder(Player1HandAdapter.ViewHolder holder, int position) {
         holder.name.setText(player1HandRaw.get(position).getName());
         v.setTag(player1HandRaw.get(position));
+        boolean playable = game.playable(player1HandRaw.get(position), game.getPlayer(0));
+        if (!playable) {
+            v.setPadding(2, 2, 2, 2);
+            v.setBackgroundColor(Color.RED);
+        } else {
+            v.setPadding(2, 2, 2, 2);
+            v.setBackgroundColor(Color.GREEN);
+        }
 
     }
 
