@@ -100,13 +100,6 @@ public class MagicActivity extends AppCompatActivity {
         Player player1 = new Player(deck1);
         Player player2 = new Player(deck2);
         this.game = new GameLogic(player1, player2);
-//        Add a name to Players!
-        this.player1Name = (TextView) findViewById(R.id.player1_name );
-        player1Name.setText("Challenger");
-
-        this.player2Name = (TextView) findViewById(R.id.player2_name );
-        player2Name.setText("Planeswalker");
-
         this.createPlayerStats();
         this.createHand();
         this.createPlayer1Land();
@@ -118,6 +111,12 @@ public class MagicActivity extends AppCompatActivity {
     }
 
     private void createPlayerStats() {
+        this.player1Name = (TextView) findViewById(R.id.player1_name );
+        player1Name.setText("Challenger");
+
+        this.player2Name = (TextView) findViewById(R.id.player2_name );
+        player2Name.setText("Planeswalker");
+
         this.currentPhase = (TextView) findViewById(R.id.current_phase );
         currentPhase.setText("Current Phase \n \n" + game.getRound());
 
@@ -161,15 +160,6 @@ public class MagicActivity extends AppCompatActivity {
         player2UntappedLand.setText("Untapped Land \n" + game.getPlayer(1).getUntappedLandSize().toString());
     }
 
-    private void createAttackers() {
-        ArrayList<Creature> attackersRaw = game.getActiveAttackers();
-        this.attackers = (RecyclerView) findViewById(R.id.attackers);
-        this.attackers.setHasFixedSize(true);
-        this.attackersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        this.attackers.setLayoutManager(attackersLayoutManager);
-        this.attackersAdapter = new AttackersAdapter(attackersRaw);
-        this.attackers.setAdapter(attackersAdapter);
-    }
 
     private void createPlayer2Creatures() {
         ArrayList<Creature> player2CreaturesRaw = game.getPlayer2Creatures();
@@ -215,6 +205,16 @@ public class MagicActivity extends AppCompatActivity {
         this.player1Land.setAdapter(player1LandAdapter);
     }
 
+    public void createAttackers(){
+        ArrayList<Creature> attackersRaw = game.getActiveBlockers();
+        this.attackers = (RecyclerView) findViewById(R.id.attackers);
+        this.attackers.setHasFixedSize(true);
+        this.attackersLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        this.attackers.setLayoutManager(attackersLayoutManager);
+        this.attackersAdapter = new AttackersAdapter(attackersRaw);
+        this.attackers.setAdapter(attackersAdapter);
+    }
+
     public void createBlockers(){
         ArrayList<Creature> blockersRaw = game.getActiveBlockers();
         this.blockers = (RecyclerView) findViewById(R.id.blockers);
@@ -234,6 +234,7 @@ public class MagicActivity extends AppCompatActivity {
             this.createHand();
             this.createPlayer1Land();
             this.createPlayerStats();
+            Toast.makeText(this, cardToPlay.getName() + " played", Toast.LENGTH_SHORT).show();
         } else if (!game.playable(cardToPlay, game.getPlayer(0) ) && (cardToPlay instanceof Creature) ){
             Toast.makeText(this, "Insufficient mana!", Toast.LENGTH_SHORT).show();
         } else if (!game.playable(cardToPlay, game.getPlayer(0) ) && cardToPlay instanceof Land ){
@@ -247,9 +248,15 @@ public class MagicActivity extends AppCompatActivity {
 
         if (creatureToAttack.getTapped() ){
             Toast.makeText(this, "Creature Tapped!", Toast.LENGTH_SHORT).show();
+        } else if(!creatureToAttack.getTapped()){
+            game.addActiveAttacker(creatureToAttack);
+            Toast.makeText(this, "Creature now attacking!", Toast.LENGTH_SHORT).show();
+            this.createPlayerStats();
+            this.createAttackers();
+            this.createPlayer1Creatures();
         }
 
-        game.addActiveAttacker(creatureToAttack);
+
     }
 
 }
