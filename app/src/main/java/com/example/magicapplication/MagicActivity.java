@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class MagicActivity extends AppCompatActivity {
     private GameLogic game;
+    private TextView currentPhase;
     private TextView player1Name;
     private TextView player2Name;
     private TextView player1Lifepoints;
@@ -117,6 +118,9 @@ public class MagicActivity extends AppCompatActivity {
     }
 
     private void createPlayerStats() {
+        this.currentPhase = (TextView) findViewById(R.id.current_phase );
+        currentPhase.setText("Current Phase \n \n" + game.getRound());
+
         this.player1Lifepoints = (TextView) findViewById(R.id.player1_lifepoints );
         player1Lifepoints.setText("LifePoints \n" + game.getPlayer(0).getLifePoints().toString());
 

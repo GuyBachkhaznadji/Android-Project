@@ -19,4 +19,6 @@
     <string name="player2_tapped_creatures"></string>
     <string name="player2_untapped_land"></string>
     <string name="player2_untapped_creatures"></string>
+    <string name="next_phase">Next Phase</string>
+    <string name="current_phase"></string>
 </resources>

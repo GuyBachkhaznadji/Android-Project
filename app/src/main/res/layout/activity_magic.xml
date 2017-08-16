@@ -139,7 +139,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/player1_hand"
-        android:layout_width="940dp"
+        android:layout_width="860dp"
         android:layout_height="220dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -200,14 +200,14 @@
         android:id="@+id/player1_land_num"
         android:layout_width="100dp"
         android:layout_height="110dp"
-        android:layout_alignBaseline="@+id/player1_lifepoints"
-        android:layout_alignBottom="@+id/player1_lifepoints"
-        android:layout_toEndOf="@+id/player1_hand"
-        android:layout_toRightOf="@+id/player1_hand"
         android:text="@string/player1_land_num"
         android:textAlignment="center"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/player1_lifepoints"
+        android:layout_alignBottom="@+id/player1_lifepoints"
+        android:layout_toLeftOf="@+id/player1_lifepoints"
+        android:layout_toStartOf="@+id/player1_lifepoints" />
 
     <TextView
         android:id="@+id/player1_untapped_land_num"
@@ -217,6 +217,27 @@
         android:layout_toLeftOf="@+id/player1_lifepoints"
         android:layout_toStartOf="@+id/player1_lifepoints"
         android:text="@string/player1_untapped_land_num"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/next_phase"
+        android:layout_width="80dp"
+        android:layout_height="110dp"
+        android:text="@string/next_phase"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/player1_hand"
+        android:layout_toEndOf="@+id/player1_hand" />
+
+    <TextView
+        android:id="@+id/current_phase"
+        android:layout_width="80dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/player1_land"
+        android:layout_toLeftOf="@+id/player1_land_num"
+        android:layout_toStartOf="@+id/player1_land_num"
+        android:text="@string/current_phase"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold" />
