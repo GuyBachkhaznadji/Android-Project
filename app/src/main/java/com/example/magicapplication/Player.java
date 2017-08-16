@@ -44,10 +44,10 @@ public class Player {
 
     public void drawCard(int numCards){
         for (int i = 0; i < numCards; i++){
-            if (this.deck.size() >= 1) {
+            if (this.deck.size() > 0) {
                 this.hand.add(this.deck.get(0));
                 this.deck.remove(0);
-            } else if (deck.size() == 0) {
+            } else if (deck.size() < 1) {
                 this.dead = true;
             }
         }
@@ -74,9 +74,6 @@ public class Player {
     public void removeLifePoints(Integer lifePoints) {
         this.lifePoints -= lifePoints;
         this.amDead();
-        if (this.dead){
-//            this.gameover;
-        }
     }
 
 
@@ -167,7 +164,7 @@ public class Player {
     }
 
     public void amDead(){
-        if (this.lifePoints <= 0){
+        if (this.lifePoints < 1){
             this.setDead(true);
         }
     }
