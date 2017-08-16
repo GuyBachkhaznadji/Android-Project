@@ -5,12 +5,14 @@ public class Creature extends Card {
     private Integer attack;
     private Integer defence;
     private Boolean attacking;
+    private Boolean summoningSickness;
 
     public Creature(String name, String colour, int cost, int attack, int defence){
         super(name, colour, cost, true);
         this.attacking = false;
         this.attack = attack;
         this.defence = defence;
+        this.summoningSickness = true;
     }
 
     public boolean getAttacking() {
@@ -35,5 +37,13 @@ public class Creature extends Card {
 
     public void setDefence(Integer defence) {
         this.defence = defence;
+    }
+
+    public Boolean getSummoningSickness() {
+        return summoningSickness;
+    }
+
+    public void setSummoningSickness(Boolean summoningSickness) {
+        this.summoningSickness = summoningSickness;
     }
 }

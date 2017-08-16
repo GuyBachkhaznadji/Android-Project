@@ -1,5 +1,6 @@
 package com.example.magicapplication;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,8 @@ class Player1HandAdapter extends RecyclerView.Adapter<Player1HandAdapter.ViewHol
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
+
+
         }
     }
 }

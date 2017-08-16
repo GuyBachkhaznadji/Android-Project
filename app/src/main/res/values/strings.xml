@@ -2,6 +2,8 @@
     <string name="app_name">Magic, The Gathering</string>
     <string name="player1_name"></string>
     <string name="player1_hand_size"></string>
+    <string name="player1_land_num"></string>
+    <string name="player1_untapped_land_num"></string>
     <string name="player1_graveyard"></string>
     <string name="player1_lifepoints"></string>
     <string name="player1_hand"></string>

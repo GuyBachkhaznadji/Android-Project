@@ -17,6 +17,8 @@ public class MagicActivity extends AppCompatActivity {
     private TextView player1Name;
     private TextView player2Name;
     private TextView player1Lifepoints;
+    private TextView player1LandNum;
+    private TextView player1UntappedLandNum;
     private TextView player1HandSize;
     private TextView player1Deck;
     private TextView player1Graveyard;
@@ -118,6 +120,12 @@ public class MagicActivity extends AppCompatActivity {
         this.player1Lifepoints = (TextView) findViewById(R.id.player1_lifepoints );
         player1Lifepoints.setText("LifePoints \n" + game.getPlayer(0).getLifePoints().toString());
 
+        this.player1LandNum = (TextView) findViewById(R.id.player1_land_num );
+        player1LandNum.setText("Land \n" + game.getPlayer(0).getActiveLandSize().toString());
+
+        this.player1UntappedLandNum = (TextView) findViewById(R.id.player1_untapped_land_num );
+        player1UntappedLandNum.setText("Untapped Land \n" + game.getPlayer(0).getUntappedLandSize().toString());
+
         this.player1HandSize = (TextView) findViewById(R.id.player1_hand_size);
         player1HandSize.setText("Hand \n" + game.getPlayer(0).getHandSize().toString());
 
@@ -188,6 +196,9 @@ public class MagicActivity extends AppCompatActivity {
         this.player1HandAdapter = new Player1HandAdapter(player1HandRaw);
         this.player1Hand.setAdapter(player1HandAdapter);
         Log.d("Cards: ", game.getPlayer(0).getHandSize().toString() );
+
+
+
     }
 
     public void createPlayer1Land(){
@@ -224,6 +235,17 @@ public class MagicActivity extends AppCompatActivity {
         } else if (!game.playable(cardToPlay, game.getPlayer(0) ) && cardToPlay instanceof Land ){
             Toast.makeText(this, "You've already played Land this turn!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void onAttackClick(View chosenCreature){
+        Creature creatureToAttack = (Creature) chosenCreature.getTag();
+        Log.d("Attacker: ", creatureToAttack.getName() );
+
+        if (creatureToAttack.getTapped() ){
+            Toast.makeText(this, "Creature Tapped!", Toast.LENGTH_SHORT).show();
+        }
+
+        game.addActiveAttacker(creatureToAttack);
     }
 
 }
