@@ -10,7 +10,6 @@ public abstract class Card {
     protected Boolean tapped;
 
 
-
     public Card(String name, String colour, Integer cost, Boolean trueFalse){
         this.name = name;
         this.colour = colour;
@@ -38,4 +37,5 @@ public abstract class Card {
     public void setTapped(boolean tapped){
         this.tapped = tapped;
     }
+
 }

@@ -514,5 +514,9 @@ public class GameLogicTest {
         assertEquals(2, game.getActivePlayerCreatures().size(), 0.01);
     }
 
+    @Test
+    public void testPlayable(){
+
+    }
 }
 
