@@ -16,7 +16,7 @@ public class Player {
     public Player(ArrayList<Card> deck){
         this.lifePoints = 20;
         this.deck = deck;
-//        this.shuffleDeck();
+        this.shuffleDeck();
         this.hand = new ArrayList<Card>();
         this.activeLand = new ArrayList<Land>();
         this.graveyard = new ArrayList<Card>();
